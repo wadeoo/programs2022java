@@ -188,27 +188,23 @@ public class CalFrame extends JFrame implements ActionListener {
             operation+="8";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btnDiv){
-           if(!(operation.endsWith("+")||operation.endsWith("-")
-            ||operation.endsWith("*")||operation.endsWith("/")||operation.endsWith("."))){
+           if(!operation.matches(".*[\\+\\-*/.]$")){
                 operation+="/";
                 resultLabel.setText(operation.replace("/","÷"));
             }
         }else if(e.getSource()==btnMulti){
-            if(!(operation.endsWith("+")||operation.endsWith("-")
-            ||operation.endsWith("*")||operation.endsWith("/")||operation.endsWith("."))){
+            if(!operation.matches(".*[\\+\\-*/.]$")){
                 operation+="*";
                 resultLabel.setText(operation.replace("/","÷"));
             }
 
         }else if(e.getSource()==btnAdd){
-            if(!(operation.endsWith("+")||operation.endsWith("-")
-            ||operation.endsWith("*")||operation.endsWith("/")||operation.endsWith("."))){
+            if(!operation.matches(".*[\\+\\-*/.]$")){
                 operation+="+";
                 resultLabel.setText(operation.replace("/","÷"));
             }
         }else if (e.getSource()==btnSubt) {
-            if(!(operation.endsWith("+")||operation.endsWith("-")
-            ||operation.endsWith("*")||operation.endsWith("/")||operation.endsWith("."))){
+            if(!operation.matches(".*[\\+\\-*/.]$")){
                 operation+="-";
                 resultLabel.setText(operation.replace("/","÷"));
             }
@@ -218,7 +214,7 @@ public class CalFrame extends JFrame implements ActionListener {
 //                operation+=".";
 //                resultLabel.setText(operation.replace("/","÷"));
 //            }
-            if(!operation.matches(".*[\\+\\-*/.]$")){
+            if(!operation.matches(".*[\\+\\-*/.]$")&&!operation.matches(".*[0-9]*\\.[0-9]*$")){
                 operation+=".";
                 resultLabel.setText(operation.replace("/","÷"));
             }
