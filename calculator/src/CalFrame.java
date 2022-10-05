@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 public class CalFrame extends JFrame implements ActionListener {
     private final JLabel resultLabel;
     private final JButton btn7,btn8,btn9,btn4,btn5,btn6,btn1,btn2,btn3,btn0,btnMulti,btnEqual,btnAdd,btnSubt
-            ,btnDiv,btnDot,btnBack,btnClear;
+            ,btnDiv,btnDot,btnBack,btnClear,btnFlip;
     private  final  Dimension btnDim=new Dimension(70,40);
     private  String operand1="", operand2="";//运算子
     private int  operatorType = 0;//1为+, 2为-, 3为*
@@ -21,9 +21,12 @@ public class CalFrame extends JFrame implements ActionListener {
     private ScriptEngine engine =mgr.getEngineByName("JavaScript");
 
 
+
     //regex
     String OperatorAndDotMatch =".*[\\+\\-*/.]$";
     String IllegalDotUsePreventMatch=".*[0-9]*\\.[0-9]*$";
+    String LonelyZeroBehindOperatorMatch =".*[\\+\\-*/]0$";
+    String LonelyOperatorAndDotTrailingMatch=".*[\\+\\-*/.]$";
 
     public CalFrame() throws HeadlessException {
 
@@ -199,6 +202,14 @@ public class CalFrame extends JFrame implements ActionListener {
         btnEqual.addActionListener(this);
         add(btnEqual);
 
+        //±
+        btnFlip= new JButton("±");
+        btnFlip.setLocation(5,230);
+        btnFlip.setSize(btnDim);
+        btnFlip.setFont(resultFont);
+        btnFlip.addActionListener(this);
+        add(btnFlip);
+
 
     }
 
@@ -206,63 +217,83 @@ public class CalFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if(e.getSource()==btn7){
-            if(operation=="0"){
-                operation="";
+            if(operation.equals("0")) {
+                operation = "";
+            }else if(operation.matches(LonelyZeroBehindOperatorMatch)){
+                operation=operation.replaceAll("0$","");
             }
             operation+="7";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btn8){
-            if(operation=="0"){
+            if(operation.equals("0")){
                 operation="";
+            }else if(operation.matches(LonelyZeroBehindOperatorMatch)){
+                operation=operation.replaceAll("0$","");
             }
             operation+="8";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btn9){
-            if(operation=="0"){
+            if(operation.equals("0")){
                 operation="";
+            }else if(operation.matches(LonelyZeroBehindOperatorMatch)){
+                operation=operation.replaceAll("0$","");
             }
             operation+="9";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btn4){
-            if(operation=="0"){
+            if(operation.equals("0")){
                 operation="";
+            }else if(operation.matches(LonelyZeroBehindOperatorMatch)){
+                operation=operation.replaceAll("0$","");
             }
             operation+="4";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btn5){
-            if(operation=="0"){
+            if(operation.equals("0")){
                 operation="";
+            }else if(operation.matches(LonelyZeroBehindOperatorMatch)){
+                operation=operation.replaceAll("0$","");
             }
             operation+="5";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btn6){
-            if(operation=="0"){
+            if(operation.equals("0")){
                 operation="";
+            }else if(operation.matches(LonelyZeroBehindOperatorMatch)){
+                operation=operation.replaceAll("0$","");
             }
             operation+="6";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btn1){
-            if(operation=="0"){
+            if(operation.equals("0")){
                 operation="";
+            }else if(operation.matches(LonelyZeroBehindOperatorMatch)){
+                operation=operation.replaceAll("0$","");
             }
             operation+="1";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btn2){
-            if(operation=="0"){
+            if(operation.equals("0")){
                 operation="";
+            }else if(operation.matches(LonelyZeroBehindOperatorMatch)){
+                operation=operation.replaceAll("0$","");
             }
             operation+="2";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btn3){
-            if(operation=="0"){
+            if(operation.equals("0")){
                 operation="";
+            }else if(operation.matches(LonelyZeroBehindOperatorMatch)){
+                operation=operation.replaceAll("0$","");
             }
             operation+="3";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btn0){
-            if(operation!="0"){
-                operation+="0";
-                resultLabel.setText(operation.replace("/","÷"));
+            if(!operation.equals("0")){
+                if(!operation.matches(LonelyZeroBehindOperatorMatch)) {
+                    operation += "0";
+                    resultLabel.setText(operation.replace("/", "÷"));
+                }
             }
         }else if(e.getSource()==btnDiv){
            if(!operation.matches(OperatorAndDotMatch)){
@@ -298,17 +329,32 @@ public class CalFrame extends JFrame implements ActionListener {
                 }
                 resultLabel.setText(operation.replace("/","÷"));
             }
+        }else if(e.getSource()==btnFlip){
+            if(!operation.equals("0")){
+                if(!operation.matches(LonelyZeroBehindOperatorMatch)){
+                    if(!operation.matches((LonelyOperatorAndDotTrailingMatch))){
+                        if(operation.matches(".*\\(\\-[0-9]*\\)$")){
+                           // operation.replaceAll(".*\\(\\-[0-9]*\\)$",".*");
+                        }
+                    }
+                }
+            }
         }else if(e.getSource()==btnClear){
             operation="0";
             resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btnEqual){
-            try {
-                sresult=engine.eval(operation).toString();
-            } catch (ScriptException e1) {
-                e1.printStackTrace();
+            if(!operation.matches("[0-9]*")){
+                if(operation.matches(LonelyOperatorAndDotTrailingMatch)){
+                  operation=operation.replaceAll("[\\+\\-*/.]$","") ;
+                }
+                try {
+                    sresult=engine.eval(operation).toString();
+                } catch (ScriptException e1) {
+                    e1.printStackTrace();
+                }
+                resultLabel.setText(sresult);
+                operation=sresult;
             }
-            resultLabel.setText(sresult);
-            operation=sresult;
         }
 
     }
