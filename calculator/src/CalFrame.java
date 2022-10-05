@@ -13,19 +13,33 @@ public class CalFrame extends JFrame implements ActionListener {
     private  final  Dimension btnDim=new Dimension(70,40);
     private  String operand1="", operand2="";//运算子
     private int  operatorType = 0;//1为+, 2为-, 3为*
-    private String operation="";
+    private String operation="0";
     private String sresult;//
     private ScriptEngineManager mgr =new ScriptEngineManager();
     private ScriptEngine engine =mgr.getEngineByName("JavaScript");
 
 
     public CalFrame() throws HeadlessException {
+
+        //窗口的基础初始化
         setSize(320,600);
         setTitle("计算器");
         setLocationRelativeTo(null);
         setLayout(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //设置图标
         ImageIcon icon = new ImageIcon("./img/calculator2.png");
         setIconImage(icon.getImage());
+
+        //设置透明度
+        //setUndecorated(true);
+        //setBackground(new Color(0.f,0.f,0.f,0.5f));
+        //getContentPane().setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
+
+
+
+
         resultLabel = new JLabel("0",JLabel.RIGHT);
         resultLabel.setSize(295,40);
         resultLabel.setLocation(5,5);
@@ -162,36 +176,60 @@ public class CalFrame extends JFrame implements ActionListener {
 
         //
         if(e.getSource()==btn7){
+            if(operation=="0"){
+                operation="";
+            }
             operation+="7";
-            resultLabel.setText(operation);
+            resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btn8){
+            if(operation=="0"){
+                operation="";
+            }
             operation+="8";
-            resultLabel.setText(operation);
+            resultLabel.setText(operation.replace("/","÷"));
+        }else if(e.getSource()==btnDiv){
+           if(!(operation.endsWith("+")||operation.endsWith("-")
+            ||operation.endsWith("*")||operation.endsWith("/")||operation.endsWith("."))){
+                operation+="/";
+                resultLabel.setText(operation.replace("/","÷"));
+            }
         }else if(e.getSource()==btnMulti){
             if(!(operation.endsWith("+")||operation.endsWith("-")
-            ||operation.endsWith("*")||operation.endsWith("÷"))){
+            ||operation.endsWith("*")||operation.endsWith("/")||operation.endsWith("."))){
                 operation+="*";
-                resultLabel.setText(operation);
+                resultLabel.setText(operation.replace("/","÷"));
             }
 
         }else if(e.getSource()==btnAdd){
             if(!(operation.endsWith("+")||operation.endsWith("-")
-                    ||operation.endsWith("*")||operation.endsWith("÷"))){
+            ||operation.endsWith("*")||operation.endsWith("/")||operation.endsWith("."))){
                 operation+="+";
-                resultLabel.setText(operation);
+                resultLabel.setText(operation.replace("/","÷"));
             }
         }else if (e.getSource()==btnSubt) {
             if(!(operation.endsWith("+")||operation.endsWith("-")
-                    ||operation.endsWith("*")||operation.endsWith("÷"))){
+            ||operation.endsWith("*")||operation.endsWith("/")||operation.endsWith("."))){
                 operation+="-";
-                resultLabel.setText(operation);
+                resultLabel.setText(operation.replace("/","÷"));
             }
+        }else if(e.getSource()==btnDot){
+//            if(!(operation.endsWith("+")||operation.endsWith("-")
+//            ||operation.endsWith("*")||operation.endsWith("/")||operation.endsWith("."))){
+//                operation+=".";
+//                resultLabel.setText(operation.replace("/","÷"));
+//            }
+            if(!operation.matches(".*[\\+\\-*/.]$")){
+                operation+=".";
+                resultLabel.setText(operation.replace("/","÷"));
+            }
+
         }else if (e.getSource()==btnBack){
+            if(operation!="0")
             operation=operation.substring(0,operation.length()-1);
-            resultLabel.setText(operation);
+            resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btnClear){
-            operation="";
-            resultLabel.setText("");
+            operation="0";
+            resultLabel.setText(operation.replace("/","÷"));
         }else if(e.getSource()==btnEqual){
             try {
                 sresult=engine.eval(operation).toString();
