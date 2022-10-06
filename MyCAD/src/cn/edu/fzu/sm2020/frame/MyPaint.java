@@ -51,6 +51,19 @@ public class MyPaint extends JFrame {
                 drawPanel.repaint();
             }
         }
+
+        @Override
+        public void mouseDragged(MouseEvent e){
+            super.mouseDragged(e);
+            if(!isPrePosSet){
+                prePos = e.getPoint();
+                isPrePosSet=true;
+            }else{
+                curPos=e.getPoint();
+                isPrePosSet=false;
+                drawPanel.repaint();
+            }
+        }
     }
 
     public MyPaint(String title,Dimension frameDim) throws HeadlessException {
