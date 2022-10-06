@@ -84,6 +84,7 @@ public class MyPaint extends JFrame {
             super.mouseMoved(e);
             if(isPrePosSet){
                 line.curPos=e.getPoint();
+                lineList.add(line);
                 drawPanel.repaint();
             }
         }
@@ -112,7 +113,7 @@ public class MyPaint extends JFrame {
         rbLine = new JRadioButton("直线");
         rbCircle=new JRadioButton("画圆");
         rbRect=new JRadioButton("矩形");
-        line=new Line();
+
 
 
 
@@ -121,14 +122,14 @@ public class MyPaint extends JFrame {
         btnGroup.add(rbCircle);
         btnGroup.add(rbRect);
 
-        //默认直线
+        //默认直线模式
         rbLine.setSelected(true);
 
         ctrlPanel1.add(rbLine);
         ctrlPanel1.add(rbCircle);
         ctrlPanel1.add(rbRect);
         add(ctrlPanel1,BorderLayout.NORTH);
-        this.add(drawPanel);
+        add(drawPanel);
 
 
 
