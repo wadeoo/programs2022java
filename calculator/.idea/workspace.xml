@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="25e7b371-7ff8-463f-9524-69a06d69767d" name="默认" comment="">
-      <change afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Line.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCAD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/frame/MyPaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/frame/MyPaint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Line.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
