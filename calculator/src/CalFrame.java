@@ -11,10 +11,8 @@ import java.awt.event.ActionListener;
 public class CalFrame extends JFrame implements ActionListener {
     private final JLabel resultLabel;
     private final JButton btn7,btn8,btn9,btn4,btn5,btn6,btn1,btn2,btn3,btn0,btnMulti,btnEqual,btnAdd,btnSubt
-            ,btnDiv,btnDot,btnBack,btnClear,btnFlip;
+            ,btnDiv,btnDot,btnBack,btnClear,btnFlip,btnQuit;
     private  final  Dimension btnDim=new Dimension(70,40);
-    private  String operand1="", operand2="";//运算子
-    private int  operatorType = 0;//1为+, 2为-, 3为*
     private String operation="0";
     private String sresult;//
     private ScriptEngineManager mgr =new ScriptEngineManager();
@@ -31,7 +29,7 @@ public class CalFrame extends JFrame implements ActionListener {
     public CalFrame() throws HeadlessException {
 
         //窗口的基础初始化
-        setSize(320,600);
+        setSize(320,400);
         setTitle("计算器");
         setLocationRelativeTo(null);
         setLayout(null);
@@ -42,8 +40,8 @@ public class CalFrame extends JFrame implements ActionListener {
         setIconImage(icon.getImage());
 
         //设置透明度
-        //setUndecorated(true);
-        //setBackground(new Color(0.f,0.f,0.f,0.5f));
+        setUndecorated(true);
+        setBackground(new Color(1.f,1.f,1.f,0.5f));
         //getContentPane().setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
 
 
@@ -63,6 +61,14 @@ public class CalFrame extends JFrame implements ActionListener {
         btnClear.setFont(resultFont);
         btnClear.addActionListener(this);
         add(btnClear);
+
+        //Quit
+        btnQuit=new JButton("Q");
+        btnQuit.setLocation(80,50);
+        btnQuit.setSize(btnDim);
+        btnQuit.setFont(resultFont);
+        btnQuit.addActionListener(this);
+        add(btnQuit);
 
 
         //back
@@ -342,6 +348,9 @@ public class CalFrame extends JFrame implements ActionListener {
         }else if(e.getSource()==btnClear){
             operation="0";
             resultLabel.setText(operation.replace("/","÷"));
+        }else if(e.getSource()==btnQuit){
+            System.exit(0);
+
         }else if(e.getSource()==btnEqual){
             if(!operation.matches("[0-9]*")){
                 if(operation.matches(LonelyOperatorAndDotTrailingMatch)){
