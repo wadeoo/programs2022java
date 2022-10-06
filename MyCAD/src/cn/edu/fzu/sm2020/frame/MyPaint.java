@@ -28,6 +28,8 @@ public class MyPaint extends JFrame {
             setBackground(Color.WHITE);
             addMouseListener(new MyMouseAdapter());//为绘图区域添加鼠标侦听器
             addMouseMotionListener(new MyMouseMotionAdapter());
+            Cursor cursor=new Cursor(Cursor.CROSSHAIR_CURSOR);
+            this.setCursor(cursor);
         }
 
 
@@ -80,6 +82,10 @@ public class MyPaint extends JFrame {
         @Override
         public void mouseMoved(MouseEvent e){
             super.mouseMoved(e);
+            if(isPrePosSet){
+                line.curPos=e.getPoint();
+                drawPanel.repaint();
+            }
         }
     }
 
