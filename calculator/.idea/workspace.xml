@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="25e7b371-7ff8-463f-9524-69a06d69767d" name="默认" comment="">
-      <change beforePath="$PROJECT_DIR$/src/CalFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="25e7b371-7ff8-463f-9524-69a06d69767d" name="默认" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,10 +30,10 @@
     <session id="-789685456">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.5" value="3" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.5" value="4" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -85,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/CalFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="338" column="21" lean-forward="true" selection-start-line="338" selection-start-column="21" selection-end-line="338" selection-end-column="21" />
+            <state relative-caret-position="112">
+              <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,9 +123,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="223" />
+    <option name="x" value="222" />
     <option name="width" value="1310" />
-    <option name="height" value="1038" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -137,7 +134,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -160,6 +156,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -217,22 +214,22 @@
       <workItem from="1664936270345" duration="6781000" />
       <workItem from="1664945819416" duration="33000" />
       <workItem from="1664945907666" duration="25875000" />
+      <workItem from="1665015771621" duration="405000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36938000" />
+    <option name="totallyTimeSpent" value="37343000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="179" y="0" width="1048" height="830" extended-state="0" />
-    <editor active="true" />
+    <frame x="178" y="0" width="1048" height="831" extended-state="0" />
     <layout>
       <window_info id="Capture Tool" order="0" />
       <window_info id="Image Layers" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="设计器" order="4" />
-      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.13131313" />
+      <window_info content_ui="combo" id="Project" order="5" visible="true" weight="0.13333334" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="1" weight="0.32934132" />
@@ -241,7 +238,7 @@
       <window_info anchor="bottom" id="Messages" order="4" weight="0.32711622" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
-      <window_info anchor="bottom" id="Run" order="7" weight="0.23959827" />
+      <window_info anchor="bottom" id="Run" order="7" weight="0.23925501" />
       <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
       <window_info anchor="bottom" id="调试" order="9" weight="0.32855093" />
       <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
@@ -263,18 +260,6 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/CalFrame.java</url>
-          <line>336</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
@@ -345,10 +330,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="1012" column="16" selection-start-line="1012" selection-start-column="16" selection-end-line="1012" selection-end-column="16" />
-          <folding>
-            <element signature="e#36453#36454#0" expanded="true" />
-            <element signature="e#36488#36489#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -356,10 +337,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="1966" selection-start-line="1966" selection-end-line="1966" />
-          <folding>
-            <element signature="e#57434#57435#0" expanded="true" />
-            <element signature="e#57511#57512#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -390,8 +367,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CalFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="338" column="21" lean-forward="true" selection-start-line="338" selection-start-column="21" selection-end-line="338" selection-end-column="21" />
+        <state relative-caret-position="112">
+          <caret line="20" column="65" selection-start-line="20" selection-start-column="65" selection-end-line="20" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
