@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7244393-bd4c-4b9b-9a74-35ece87320b5" name="默认" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle2.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,12 +34,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="20228" />
+          <entry key="java" value="20256" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="20228" />
+          <entry key="JAVA" value="20256" />
         </counts>
       </usages-collector>
     </session>
@@ -51,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="131" column="47" selection-start-line="131" selection-start-column="47" selection-end-line="131" selection-end-column="47" />
+            <state relative-caret-position="296">
+              <caret line="167" column="64" selection-start-line="167" selection-start-column="64" selection-end-line="167" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -168,7 +166,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665401675505" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665402991338" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../wadeoo programs2022java master MyCAD" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -217,12 +215,12 @@
       <updated>1665016175902</updated>
       <workItem from="1665016181024" duration="13656000" />
       <workItem from="1665361280309" duration="18466000" />
-      <workItem from="1665386353731" duration="8777000" />
+      <workItem from="1665386353731" duration="10006000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40899000" />
+    <option name="totallyTimeSpent" value="42128000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1244" height="1047" extended-state="0" />
@@ -390,8 +388,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="131" column="47" selection-start-line="131" selection-start-column="47" selection-end-line="131" selection-end-column="47" />
+        <state relative-caret-position="296">
+          <caret line="167" column="64" selection-start-line="167" selection-start-column="64" selection-end-line="167" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

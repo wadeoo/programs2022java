@@ -169,17 +169,17 @@ public class MyPaint extends JFrame {
                     double offset=0.5;
                     double a=Math.cos(0.1*Math.PI),b=Math.cos(0.3*Math.PI)
                             ,c=Math.sin(0.1*Math.PI),d=Math.sin(0.3*Math.PI)
-                            ,e=Math.tan(0.4*Math.PI),f=Math.cos(0.2*Math.PI)
-                            ,h=radius*(1-c)/e,j=Math.sin(0.2*Math.PI);
+                            ,e=Math.tan(0.3*Math.PI),f=Math.cos(0.2*Math.PI)
+                            ,h=radius*c/e,j=Math.sin(0.2*Math.PI);
 
                     Point p1=new Point(x1,y1-radius);
                     Point p2=new Point((int)(x1+h+offset),(int)(y1-radius*c+offset));
                     Point p3=new Point((int)(x1+radius*a+offset),(int)(y1-radius*c+offset));
-                    Point p4=new Point((int)(x1+(2*h*f)+offset),(int)((y1+h/f)-2*h*j+offset));
+                    Point p4=new Point((int)(x1+(2*h*f)+offset),(int)((y1+h/b)-2*h*j+offset));
                     Point p5=new Point((int)(x1+radius*b+offset),(int)(y1+radius*d+offset));
-                    Point p6=new Point(x1,(int)(y1+h/f+offset));
+                    Point p6=new Point(x1,(int)(y1+h/b+offset));
                     Point p7=new Point((int)(x1-radius*b+offset),(int)(y1+radius*d+offset));
-                    Point p8=new Point((int)(x1-(2*h*f)+offset),(int)((y1+h/f)-2*h*j+offset));
+                    Point p8=new Point((int)(x1-(2*h*f)+offset),(int)((y1+h/b)-2*h*j+offset));
                     Point p9=new Point((int)(x1-radius*a+offset),(int)(y1-radius*c+offset));
                     Point p10=new Point((int)(x1-h+offset),(int)(y1-radius*c+offset));
 
