@@ -2,6 +2,7 @@ package cn.edu.fzu.sm2020.frame;
 
 import cn.edu.fzu.sm2020.shape.Circle;
 import cn.edu.fzu.sm2020.shape.Line;
+import cn.edu.fzu.sm2020.shape.Star;
 import cn.edu.fzu.sm2020.shape.Rect;
 import com.sun.xml.internal.ws.util.StringUtils;
 
@@ -15,9 +16,16 @@ public class MyPaint extends JFrame {
 
     private final JPanel ctrlPanel1;
     private final DrawPanel drawPanel;
-    private final JRadioButton rbLine,rbCircle,rbRect;
+    private final JRadioButton rbLine,rbCircle,rbRect,rbStar;
     private final ButtonGroup btnGroup;
+    private JButton colorButton;
+    private Color currentColor=Color.BLACK;
     private int drawType=0;//绘图类型模式,0-直线 ,1-圆 2-矩形
+
+    //fot star
+    private Star star;
+    private List<Star>  starList=new ArrayList<>();
+    private  Point starP1=null,starP2=null;
 
     //for rect
     private Rect rect;
@@ -74,6 +82,7 @@ public class MyPaint extends JFrame {
                 }
             }
 
+            //draw rectangles
             if(rectList.size()>0){
                 for (int i=0;i<rectList.size();i++){
                     rectP1=rectList.get(i).point1;
@@ -84,6 +93,14 @@ public class MyPaint extends JFrame {
                 }
             }
 
+            //draw star
+            if (starList.size()>0){
+                for (int i=0;i<starList.size();i++){
+                    starP1=starList.get(i).point1;
+                    starP2=starList.get(i).point2;
+                    
+                }
+            }
 
 
 
@@ -104,6 +121,9 @@ public class MyPaint extends JFrame {
                 }else if(drawType==2){
                     rect = new Rect();
                     rect.point1=e.getPoint();
+                }else if (drawType==3){
+                    star=new Star();
+                    star.point1=e.getPoint();
                 }
 
                 isPrePosSet=true;
@@ -117,6 +137,9 @@ public class MyPaint extends JFrame {
                 }else if(drawType==2){
                     rect.point2=e.getPoint();
                     rectList.add(rect);
+                }else if(drawType==3){
+                    star.point2=e.getPoint();
+                    starList.add(star);
                 }
 
                 isPrePosSet=false;
@@ -145,6 +168,9 @@ public class MyPaint extends JFrame {
                 }else if (drawType==2){
                     rect.point2=e.getPoint();
                     rectList.add(rect);
+                }else if(drawType==3){
+                    star.point2=e.getPoint();
+                    starList.add(star);
                 }
                 drawPanel.repaint();
             }
@@ -173,6 +199,22 @@ public class MyPaint extends JFrame {
                drawType=2;
            }
        });
+
+       rbStar.addItemListener(new ItemListener() {
+           @Override
+           public void itemStateChanged(ItemEvent e) {
+               drawType=3;
+           }
+       });
+
+
+       colorButton.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               currentColor=JColorChooser.showDialog(null,"选择颜色",Color.BLACK);
+               colorButton.setBackground(currentColor);
+           }
+       });
     }
 
 
@@ -199,6 +241,9 @@ public class MyPaint extends JFrame {
         rbLine = new JRadioButton("直线");
         rbCircle=new JRadioButton("画圆");
         rbRect=new JRadioButton("矩形");
+        rbStar=new JRadioButton("五角星");
+        colorButton=new JButton("颜色");
+
 
 
 
@@ -207,6 +252,7 @@ public class MyPaint extends JFrame {
         btnGroup.add(rbLine);
         btnGroup.add(rbCircle);
         btnGroup.add(rbRect);
+        btnGroup.add(rbStar);
 
         //默认直线模式
         rbLine.setSelected(true);
@@ -214,12 +260,14 @@ public class MyPaint extends JFrame {
         ctrlPanel1.add(rbLine);
         ctrlPanel1.add(rbCircle);
         ctrlPanel1.add(rbRect);
+        ctrlPanel1.add(rbStar);
+        ctrlPanel1.add(colorButton);
         add(ctrlPanel1,BorderLayout.NORTH);
         add(drawPanel);
 
         //
         initBtnsListener();
-
+        colorButton.setBackground(currentColor);
 
 
     }
