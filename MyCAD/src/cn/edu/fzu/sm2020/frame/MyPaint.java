@@ -105,9 +105,17 @@ public class MyPaint extends JFrame {
                     rectP1=rectList.get(i).point1;
                     rectP2=rectList.get(i).point2;
                     int width=rectP2.x-rectP1.x;
-                    int height= rectP2.y-rectP1.y;
+                    int height=rectP2.y-rectP1.y;
                     g2d.setColor(rectList.get(i).color);
-                    g2d.drawRect(rectP1.x,rectP1.y,width,height);
+                    if(width<0&&height>0){
+                        g2d.drawRect(rectP2.x,rectP1.y,-width,height);
+                    }else if(width<0&&height<0){
+                        g2d.drawRect(rectP2.x,rectP2.y,-width,-height);
+                    }else if(width>0&&height<0){
+                        g2d.drawRect(rectP1.x,rectP2.y,width,-height);
+                    }else{
+                        g2d.drawRect(rectP1.x,rectP1.y,width,height);
+                    }
                 }
             }
 
