@@ -4,6 +4,7 @@ import cn.edu.fzu.sm2020.shape.Circle;
 import cn.edu.fzu.sm2020.shape.Line;
 import cn.edu.fzu.sm2020.shape.Star;
 import cn.edu.fzu.sm2020.shape.Rect;
+import org.omg.PortableServer.POA;
 
 import javax.swing.*;
 import java.awt.*;
@@ -124,7 +125,33 @@ public class MyPaint extends JFrame {
                 for (int i=0;i<starList.size();i++){
                     starP1=starList.get(i).point1;
                     starP2=starList.get(i).point2;
+                    int x1=starP1.x, y1=starP1.y;
+                    int radius= (int)(Math.sqrt(Math.pow(starP1.x-starP2.x,2)
+                            +Math.pow(starP1.y-starP2.y,2))+0.5);
+                    double a=Math.cos(0.1*Math.PI),b=Math.cos(0.3*Math.PI)
+                            ,c=Math.sin(0.1*Math.PI),d=Math.sin(0.3*Math.PI)
+                            ,e=Math.tan(0.4*Math.PI),f=Math.cos(0.2*Math.PI)
+                            ,h=radius*(1-c)/e;
 
+                    Point p1=new Point(x1,y1-radius);
+                    Point p2=new Point((int)(x1+h),(int)(y1-radius*c));
+                    Point p3=new Point((int)(x1+radius*a),(int)(y1-radius*c));
+                    Point p4=new Point((int)(x1+(2*h*b)),(int)((y1+h/f)-2*h*d));
+                    Point p5=new Point((int)(x1+radius*b),(int)(y1+radius*d));
+                    Point p6=new Point(x1,(int)(y1+h/f));
+                    Point p7=new Point((int)(x1-radius*b),(int)(y1+radius*d));
+                    Point p8=new Point((int)(x1-(2*h*b)),(int)((y1+h/f)-2*h*d));
+                    Point p9=new Point((int)(x1-radius*a),(int)(y1-radius*c));
+                    Point p10=new Point((int)(x1-h),(int)(y1-radius*c));
+
+
+                    int x[]=new int[]{p1.x,p2.x,p3.x,p4.x,p5.x,p6.x,p7.x,p8.x,p9.x,p10.x};
+
+                    int y[]=new int[]{p1.y,p2.y,p3.y,p4.y,p5.y,p6.y,p7.y,p8.y,p9.y,p10.y};
+                    int n=10;
+
+                    Polygon plg=new Polygon(x,y,n);
+                    g2d.drawPolygon(plg);
                 }
             }
 
