@@ -127,6 +127,13 @@ public class MyPaint extends JFrame {
                         int diameter=radius*2;
 
                         Point startPoint=new Point(cx-radius,cy-radius);
+
+                        BasicStroke bs=new BasicStroke(circle2List.get(i).width
+                                ,BasicStroke.JOIN_ROUND
+                                ,BasicStroke.JOIN_ROUND);
+                        g2d.setStroke(bs);
+                        g2d.setColor(circle2List.get(i).color);
+
                         g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
                     }catch (Exception e2){
                         System.out.println("/0!");
@@ -145,6 +152,12 @@ public class MyPaint extends JFrame {
                     rectP2=rectList.get(i).point2;
                     int width=rectP2.x-rectP1.x;
                     int height=rectP2.y-rectP1.y;
+
+                    BasicStroke bs=new BasicStroke(rectList.get(i).width
+                            ,BasicStroke.JOIN_ROUND
+                            ,BasicStroke.JOIN_ROUND);
+                    g2d.setStroke(bs);
+
                     g2d.setColor(rectList.get(i).color);
                     if(width<0&&height>0){
                         g2d.drawRect(rectP2.x,rectP1.y,-width,height);
@@ -190,6 +203,11 @@ public class MyPaint extends JFrame {
                     int n=10;
 
                     Polygon plg=new Polygon(x,y,n);
+                    BasicStroke bs=new BasicStroke(starList.get(i).width
+                            ,BasicStroke.JOIN_ROUND
+                            ,BasicStroke.JOIN_ROUND);
+                    g2d.setStroke(bs);
+                    g2d.setColor(starList.get(i).color);
                     g2d.drawPolygon(plg);
                 }
             }
@@ -218,9 +236,12 @@ public class MyPaint extends JFrame {
                     rect = new Rect();
                     rect.point1=e.getPoint();
                     rect.color=currentColor;
+                    rect.width=currentWidth;
                 }else if (drawType==3){
                     star=new Star();
                     star.point1=e.getPoint();
+                    star.color=currentColor;
+                    star.width=currentWidth;
                 }
 
                 isPrePosSet=true;
@@ -247,6 +268,8 @@ public class MyPaint extends JFrame {
             if(drawType==4){
                 if(ctrlForCircle2==0){
                     circle2=new Circle2();
+                    circle2.color=currentColor;
+                    circle2.width=currentWidth;
                     circle2.point1=e.getPoint();
                     ctrlForCircle2=1;
                 }else if(ctrlForCircle2==1){
