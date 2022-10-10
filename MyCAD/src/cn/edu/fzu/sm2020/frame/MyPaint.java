@@ -233,7 +233,45 @@ public class MyPaint extends JFrame {
        setWidthButton.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               
+               JDialog jd=new JDialog(MyPaint.this);
+               jd.setTitle("设置宽度");
+
+               jd.setSize(400,200);
+               jd.setLocationRelativeTo(null);
+
+               GridLayout gridLayout=new GridLayout(2,2);
+               jd.setLayout(gridLayout);
+
+               JLabel jl=new JLabel("    线条宽度:");
+               JTextField widTF=new JTextField();
+               JButton okBtn=new JButton("确认");
+               JButton cancelBtn=new JButton("取消");
+
+
+               okBtn.addActionListener(new ActionListener() {
+                   @Override
+                   public void actionPerformed(ActionEvent e) {
+                       try{
+                           currentWidth=Integer.parseInt(widTF.getText());
+                           jd.dispose();
+                       }catch (Exception e1){
+                           JOptionPane.showMessageDialog(null,"请输入整数");
+                       }
+                   }
+               });
+
+               cancelBtn.addActionListener(new ActionListener() {
+                   @Override
+                   public void actionPerformed(ActionEvent e) {
+                       jd.dispose();
+                   }
+               });
+
+               jd.add(jl);
+               jd.add(widTF);
+               jd.add(okBtn);
+               jd.add(cancelBtn);
+               jd.setVisible(true);
            }
        });
     }
@@ -292,7 +330,8 @@ public class MyPaint extends JFrame {
         colorButton.setBackground(currentColor);
 
         //热键
-        //ctrlPanel1.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,);
+        ctrlPanel1.getInputMap().put(KeyStroke.getKeyStroke("F2"),"quit");
+        //ctrlPanel1.getActionMap().put("quit",);
 
     }
 

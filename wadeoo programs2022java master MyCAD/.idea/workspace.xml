@@ -10,10 +10,8 @@
       <change beforePath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseMotionAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseMotionAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/shape/Rect.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/shape/Rect.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/frame/MyPaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/frame/MyPaint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Circle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Rect.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Rect.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,6 +63,7 @@
     <session id="-923800996">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -215,7 +214,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665370940832" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665373397583" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
