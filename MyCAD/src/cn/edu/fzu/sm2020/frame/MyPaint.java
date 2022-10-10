@@ -1,10 +1,6 @@
 package cn.edu.fzu.sm2020.frame;
 
-import cn.edu.fzu.sm2020.shape.Circle;
-import cn.edu.fzu.sm2020.shape.Line;
-import cn.edu.fzu.sm2020.shape.Star;
-import cn.edu.fzu.sm2020.shape.Rect;
-import org.omg.PortableServer.POA;
+import cn.edu.fzu.sm2020.shape.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +12,7 @@ public class MyPaint extends JFrame {
 
     private final JPanel ctrlPanel1;
     private final DrawPanel drawPanel;
-    private final JRadioButton rbLine,rbCircle,rbRect,rbStar;
+    private final JRadioButton rbLine,rbCircle,rbRect,rbStar,rbCircle2;
     private final ButtonGroup btnGroup;
     private JButton colorButton;
     private JButton setWidthButton;
@@ -42,6 +38,11 @@ public class MyPaint extends JFrame {
     private Circle circle;
     private List<Circle> circleList= new ArrayList<>();
     private Point p1=null,p2=null;
+
+    //for circle2
+    private  Circle2 circle2;
+    private  List<Circle2> circle2List=new ArrayList<>();
+    private Point c2p1=null,c2p2=null,c2p3=null;
 
 
     //for line
@@ -97,6 +98,37 @@ public class MyPaint extends JFrame {
                     g2d.setStroke(bs);
                     g2d.setColor(circleList.get(i).color);
                     g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
+                }
+            }
+
+            //draw circle2s(3 points)
+            if(circle2List.size()>0){
+                for (int i=0;i<circle2List.size();i++){
+                    c2p1=circle2List.get(i).point1;
+                    c2p2=circle2List.get(i).point2;
+                    c2p3=circle2List.get(i).point3;
+
+                    Point midP1=null,midP2=null;
+                    midP1.x=(c2p2.x+c2p1.x)/2;
+                    midP1.y=(c2p2.y+c2p1.y)/2;
+
+                    midP2.x=(c2p3.x+c2p1.x)/2;
+                    midP2.y=(c2p3.y+c2p1.y)/2;
+
+                    float k1=-(c2p2.x-c2p1.x)/(c2p2.y-c2p1.y);
+                    float k2=-(c2p3.x-c2p1.x)/(c2p3.y-c2p1.y);
+
+                    int cx=(int)((midP2.y-midP1.y-k2*midP2.x+k1*midP1.x)/(k1-k2)+0.5);
+                    int cy=(int)(midP1.y+k1*(midP2.y-midP1.y-k2*midP2.x+k2*midP1.x)/(k1+k2)+0.5);
+
+                    int radius=(int)(Math.sqrt(Math.pow((cx-c2p1.x),2)+Math.pow((cy-c2p1.y),2))+0.5);
+                    int diameter=radius*2;
+
+                    Point startPoint=new Point(cx-radius,cy-radius);
+                    g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
+
+
+
                 }
             }
 
@@ -265,6 +297,13 @@ public class MyPaint extends JFrame {
            }
        });
 
+       rbStar.addItemListener(new ItemListener() {
+           @Override
+           public void itemStateChanged(ItemEvent e) {
+               drawType=4;
+           }
+       });
+
 
        colorButton.addActionListener(new ActionListener() {
            @Override
@@ -347,6 +386,7 @@ public class MyPaint extends JFrame {
         rbCircle=new JRadioButton("画圆");
         rbRect=new JRadioButton("矩形");
         rbStar=new JRadioButton("五角星");
+        rbCircle2=new JRadioButton("三点画圆");
         colorButton=new JButton("颜色");
         setWidthButton=new JButton("宽度: "+currentWidth);
 
@@ -358,6 +398,7 @@ public class MyPaint extends JFrame {
         btnGroup.add(rbCircle);
         btnGroup.add(rbRect);
         btnGroup.add(rbStar);
+        btnGroup.add(rbCircle2);
 
         //默认直线模式
         rbLine.setSelected(true);
@@ -366,6 +407,7 @@ public class MyPaint extends JFrame {
         ctrlPanel1.add(rbCircle);
         ctrlPanel1.add(rbRect);
         ctrlPanel1.add(rbStar);
+        ctrlPanel1.add(rbCircle2);
         ctrlPanel1.add(colorButton);
         ctrlPanel1.add(setWidthButton);
         add(ctrlPanel1,BorderLayout.NORTH);
