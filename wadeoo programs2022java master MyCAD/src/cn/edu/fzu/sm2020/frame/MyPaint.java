@@ -20,8 +20,7 @@ public class MyPaint extends JFrame {
 
     //for circle
     private Circle circle;
-    private List<Circle> circleList= new ArrayList<>();
-    private Point p1=null,p2=null;
+    private List<Circle> CircleList = new ArrayList<>();
 
 
     //for line
@@ -47,7 +46,6 @@ public class MyPaint extends JFrame {
            super.paintComponent(g);
            Graphics2D g2d=(Graphics2D)g;
 
-           //draw lines
            if(lineList.size()>0){
                 for(int i=0;i<lineList.size();i++){
                     prePos=lineList.get(i).prePos;
@@ -55,20 +53,6 @@ public class MyPaint extends JFrame {
                     g2d.drawLine(prePos.x,prePos.y,curPos.x,curPos.y);
                 }
            }
-
-           //draw circles
-            if(circleList.size()>0){
-                for (int i=0;i<circleList.size();i++){
-                    p1=circleList.get(i).point1;
-                    p2=circleList.get(i).point2;
-                    int radius= (int)(Math.sqrt(Math.pow(p1.x-p2.x,2)+Math.pow(p1.y-p2.y,2))+0.5);
-                    Point startPoint =new Point(p1.x-radius,p1.y-radius);
-                    int diameter = radius*2;
-                    g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
-                }
-            }
-
-
 
 
         }
@@ -79,24 +63,12 @@ public class MyPaint extends JFrame {
         public void mousePressed(MouseEvent e){
             super.mousePressed(e);
             if(!isPrePosSet){
-                if(drawType==0){
-                    line = new Line();
-                    line.prePos = e.getPoint();
-                }else if(drawType==1){
-                    circle = new Circle();
-                    circle.point1=e.getPoint();
-                }
-
+                line = new Line();
+                line.prePos = e.getPoint();
                 isPrePosSet=true;
             }else{
-                if(drawType==0){
-                    line.curPos=e.getPoint();
-                    lineList.add(line);
-                }else if(drawType==1){
-                    circle.point2=e.getPoint();
-                    circleList.add(circle);
-                }
-
+                line.curPos=e.getPoint();
+                lineList.add(line);
                 isPrePosSet=false;
                 drawPanel.repaint();
             }
@@ -114,18 +86,10 @@ public class MyPaint extends JFrame {
         public void mouseMoved(MouseEvent e){
             super.mouseMoved(e);
             if(isPrePosSet){
-                if (drawType==0){
-                    line.curPos=e.getPoint();
-                    lineList.add(line);
-                    drawPanel.repaint();
-                }else if(drawType==1){
-                    circle.point2=e.getPoint();
-                    circleList.add(circle);
-                    drawPanel.repaint();
-                }
-
+                line.curPos=e.getPoint();
+                lineList.add(line);
+                drawPanel.repaint();
             }
-
         }
     }
 
