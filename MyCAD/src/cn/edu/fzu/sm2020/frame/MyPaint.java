@@ -74,6 +74,10 @@ public class MyPaint extends JFrame {
                     prePos=lineList.get(i).point1;
                     curPos=lineList.get(i).point2;
                     g2d.setColor(lineList.get(i).color);
+                    BasicStroke bs=new BasicStroke(lineList.get(i).width
+                            ,BasicStroke.JOIN_ROUND
+                            ,BasicStroke.JOIN_ROUND);
+                    g2d.setStroke(bs);
                     g2d.drawLine(prePos.x,prePos.y,curPos.x,curPos.y);
                 }
            }
@@ -86,6 +90,10 @@ public class MyPaint extends JFrame {
                     int radius= (int)(Math.sqrt(Math.pow(p1.x-p2.x,2)+Math.pow(p1.y-p2.y,2))+0.5);
                     Point startPoint =new Point(p1.x-radius,p1.y-radius);
                     int diameter = radius*2;
+                    BasicStroke bs=new BasicStroke(circleList.get(i).width
+                            ,BasicStroke.JOIN_ROUND
+                            ,BasicStroke.JOIN_ROUND);
+                    g2d.setStroke(bs);
                     g2d.setColor(circleList.get(i).color);
                     g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
                 }
@@ -126,10 +134,12 @@ public class MyPaint extends JFrame {
                     line = new Line();
                     line.point1 = e.getPoint();
                     line.color=currentColor;
+                    line.width=currentWidth;
                 }else if(drawType==1){
                     circle = new Circle();
                     circle.point1=e.getPoint();
                     circle.color=currentColor;
+                    circle.width=currentWidth;
                 }else if(drawType==2){
                     rect = new Rect();
                     rect.point1=e.getPoint();
@@ -253,6 +263,7 @@ public class MyPaint extends JFrame {
                    public void actionPerformed(ActionEvent e) {
                        try{
                            currentWidth=Integer.parseInt(widTF.getText());
+                           setWidthButton.setText("宽度: "+currentWidth);
                            jd.dispose();
                        }catch (Exception e1){
                            JOptionPane.showMessageDialog(null,"请输入整数");
@@ -302,7 +313,7 @@ public class MyPaint extends JFrame {
         rbRect=new JRadioButton("矩形");
         rbStar=new JRadioButton("五角星");
         colorButton=new JButton("颜色");
-        setWidthButton=new JButton("宽度");
+        setWidthButton=new JButton("宽度: "+currentWidth);
 
 
 
