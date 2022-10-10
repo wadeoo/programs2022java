@@ -5,10 +5,7 @@ import com.sun.xml.internal.ws.util.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionAdapter;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +19,8 @@ public class MyPaint extends JFrame {
     private Line line;
     private List<Line> lineList = new ArrayList<>();
     private boolean isPrePosSet=false;
+    private int drawType=0;//绘图类型模式,0-直线 ,1-圆
+
 
     class DrawPanel extends JPanel{
         public DrawPanel() {
@@ -38,10 +37,6 @@ public class MyPaint extends JFrame {
 
            super.paintComponent(g);
            Graphics2D g2d=(Graphics2D)g;
-
-//           if(prePos!=null&&curPos!=null){
-//               g2d.drawLine(prePos.x,prePos.y,curPos.x,curPos.y);
-//           }
 
            if(lineList.size()>0){
                 for(int i=0;i<lineList.size();i++){
@@ -90,6 +85,23 @@ public class MyPaint extends JFrame {
         }
     }
 
+    private void initBtnsListener() {
+       rbLine.addItemListener(new ItemListener() {
+           @Override
+           public void itemStateChanged(ItemEvent e) {
+               drawType=0;
+           }
+       });
+
+       rbCircle.addItemListener(new ItemListener() {
+           @Override
+           public void itemStateChanged(ItemEvent e) {
+               drawType=1;
+           }
+       });
+    }
+
+
     public MyPaint(String title,Dimension frameDim) throws HeadlessException {
 
         super(title);
@@ -131,9 +143,12 @@ public class MyPaint extends JFrame {
         add(ctrlPanel1,BorderLayout.NORTH);
         add(drawPanel);
 
-
+        //
+        initBtnsListener();
 
 
 
     }
+
+
 }
