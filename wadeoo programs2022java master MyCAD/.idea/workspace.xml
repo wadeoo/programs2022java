@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7244393-bd4c-4b9b-9a74-35ece87320b5" name="默认" comment="">
-      <change afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Star.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCAD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$2.class" afterDir="false" />
@@ -12,7 +11,9 @@
       <change beforePath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseMotionAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseMotionAdapter.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/frame/MyPaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/frame/MyPaint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Rect.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyCAD/src/cn/edu/fzu/sm2020/shape/Rect.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -214,7 +215,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665369529819" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665370940832" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />

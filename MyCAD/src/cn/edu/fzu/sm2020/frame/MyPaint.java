@@ -4,7 +4,6 @@ import cn.edu.fzu.sm2020.shape.Circle;
 import cn.edu.fzu.sm2020.shape.Line;
 import cn.edu.fzu.sm2020.shape.Star;
 import cn.edu.fzu.sm2020.shape.Rect;
-import com.sun.xml.internal.ws.util.StringUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +18,13 @@ public class MyPaint extends JFrame {
     private final JRadioButton rbLine,rbCircle,rbRect,rbStar;
     private final ButtonGroup btnGroup;
     private JButton colorButton;
+    private JButton setWidthButton;
+
+
+
+
     private Color currentColor=Color.BLACK;
+    private int currentWidth=1;
     private int drawType=0;//绘图类型模式,0-直线 ,1-圆 2-矩形
 
     //fot star
@@ -45,6 +50,8 @@ public class MyPaint extends JFrame {
     private boolean isPrePosSet=false;
 
 
+
+
     class DrawPanel extends JPanel{
         public DrawPanel() {
             setBackground(Color.WHITE);
@@ -64,8 +71,9 @@ public class MyPaint extends JFrame {
            //draw lines
            if(lineList.size()>0){
                 for(int i=0;i<lineList.size();i++){
-                    prePos=lineList.get(i).prePos;
-                    curPos=lineList.get(i).curPos;
+                    prePos=lineList.get(i).point1;
+                    curPos=lineList.get(i).point2;
+                    g2d.setColor(lineList.get(i).color);
                     g2d.drawLine(prePos.x,prePos.y,curPos.x,curPos.y);
                 }
            }
@@ -78,6 +86,7 @@ public class MyPaint extends JFrame {
                     int radius= (int)(Math.sqrt(Math.pow(p1.x-p2.x,2)+Math.pow(p1.y-p2.y,2))+0.5);
                     Point startPoint =new Point(p1.x-radius,p1.y-radius);
                     int diameter = radius*2;
+                    g2d.setColor(circleList.get(i).color);
                     g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
                 }
             }
@@ -89,6 +98,7 @@ public class MyPaint extends JFrame {
                     rectP2=rectList.get(i).point2;
                     int width=rectP2.x-rectP1.x;
                     int height= rectP2.y-rectP1.y;
+                    g2d.setColor(rectList.get(i).color);
                     g2d.drawRect(rectP1.x,rectP1.y,width,height);
                 }
             }
@@ -98,7 +108,7 @@ public class MyPaint extends JFrame {
                 for (int i=0;i<starList.size();i++){
                     starP1=starList.get(i).point1;
                     starP2=starList.get(i).point2;
-                    
+
                 }
             }
 
@@ -114,13 +124,16 @@ public class MyPaint extends JFrame {
             if(!isPrePosSet){
                 if(drawType==0){
                     line = new Line();
-                    line.prePos = e.getPoint();
+                    line.point1 = e.getPoint();
+                    line.color=currentColor;
                 }else if(drawType==1){
                     circle = new Circle();
                     circle.point1=e.getPoint();
+                    circle.color=currentColor;
                 }else if(drawType==2){
                     rect = new Rect();
                     rect.point1=e.getPoint();
+                    rect.color=currentColor;
                 }else if (drawType==3){
                     star=new Star();
                     star.point1=e.getPoint();
@@ -129,7 +142,7 @@ public class MyPaint extends JFrame {
                 isPrePosSet=true;
             }else{
                 if(drawType==0){
-                    line.curPos=e.getPoint();
+                    line.point2=e.getPoint();
                     lineList.add(line);
                 }else if(drawType==1){
                     circle.point2=e.getPoint();
@@ -160,7 +173,7 @@ public class MyPaint extends JFrame {
             super.mouseMoved(e);
             if(isPrePosSet){
                 if (drawType==0){
-                    line.curPos=e.getPoint();
+                    line.point2=e.getPoint();
                     lineList.add(line);
                 }else if(drawType==1){
                     circle.point2=e.getPoint();
@@ -215,6 +228,14 @@ public class MyPaint extends JFrame {
                colorButton.setBackground(currentColor);
            }
        });
+
+
+       setWidthButton.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               
+           }
+       });
     }
 
 
@@ -243,7 +264,7 @@ public class MyPaint extends JFrame {
         rbRect=new JRadioButton("矩形");
         rbStar=new JRadioButton("五角星");
         colorButton=new JButton("颜色");
-
+        setWidthButton=new JButton("宽度");
 
 
 
@@ -262,6 +283,7 @@ public class MyPaint extends JFrame {
         ctrlPanel1.add(rbRect);
         ctrlPanel1.add(rbStar);
         ctrlPanel1.add(colorButton);
+        ctrlPanel1.add(setWidthButton);
         add(ctrlPanel1,BorderLayout.NORTH);
         add(drawPanel);
 
@@ -269,6 +291,8 @@ public class MyPaint extends JFrame {
         initBtnsListener();
         colorButton.setBackground(currentColor);
 
+        //热键
+        //ctrlPanel1.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE,);
 
     }
 

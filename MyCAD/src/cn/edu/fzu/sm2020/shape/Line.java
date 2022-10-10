@@ -5,10 +5,12 @@ import java.awt.*;
 public class Line {
 
     public  Line(){
-        this.prePos=null;
-        this.curPos=null;
+        this.point1=null;
+        this.point2=null;
+        color=Color.BLACK;
     }
 
-    public Point prePos;
-    public Point curPos;
+    public Point point1;
+    public Point point2;
+    public Color color;
 }
