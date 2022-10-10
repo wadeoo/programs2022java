@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7244393-bd4c-4b9b-9a74-35ece87320b5" name="默认" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../wadeoo programs2022java master MyCAD/src/cn/edu/fzu/sm2020/shape/Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../wadeoo programs2022java master MyCAD/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../wadeoo programs2022java master MyCAD/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,40 +26,51 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="14" />
+          <entry key="java" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="14" />
+          <entry key="JAVA" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="5776" />
+          <entry key="java" value="7119" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="5776" />
+          <entry key="JAVA" value="7119" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="121" selection-start-line="121" selection-end-line="121" />
+            <state relative-caret-position="243">
+              <caret line="82" column="63" selection-start-line="82" selection-start-column="63" selection-end-line="82" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2567#2568#0" expanded="true" />
                 <element signature="e#2604#2605#0" expanded="true" />
                 <element signature="e#2756#2757#0" expanded="true" />
                 <element signature="e#2793#2794#0" expanded="true" />
+                <element signature="e#4317#4318#0" expanded="true" />
+                <element signature="e#4354#4355#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rect.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -73,11 +84,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+            <state relative-caret-position="85">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -100,8 +111,10 @@
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/Main.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Line.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rectangle.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rect.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" />
       </list>
     </option>
   </component>
@@ -167,7 +180,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665365944137" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665366973529" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../wadeoo programs2022java master MyCAD" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -215,18 +228,18 @@
       <option name="presentableId" value="Default" />
       <updated>1665016175902</updated>
       <workItem from="1665016181024" duration="13656000" />
-      <workItem from="1665361280309" duration="4611000" />
+      <workItem from="1665361280309" duration="5575000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18267000" />
+    <option name="totallyTimeSpent" value="19231000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="109" y="0" width="1081" height="838" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20039101" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20039101" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="设计器" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -235,7 +248,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25106382" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25106382" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -324,24 +337,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="20" lean-forward="true" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
+        <state relative-caret-position="243">
+          <caret line="82" column="63" selection-start-line="82" selection-start-column="63" selection-end-line="82" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2567#2568#0" expanded="true" />
             <element signature="e#2604#2605#0" expanded="true" />
             <element signature="e#2756#2757#0" expanded="true" />
             <element signature="e#2793#2794#0" expanded="true" />
+            <element signature="e#4317#4318#0" expanded="true" />
+            <element signature="e#4354#4355#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
         </state>
       </provider>
     </entry>

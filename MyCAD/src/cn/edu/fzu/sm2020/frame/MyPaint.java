@@ -2,6 +2,7 @@ package cn.edu.fzu.sm2020.frame;
 
 import cn.edu.fzu.sm2020.shape.Circle;
 import cn.edu.fzu.sm2020.shape.Line;
+import cn.edu.fzu.sm2020.shape.Rect;
 import com.sun.xml.internal.ws.util.StringUtils;
 
 import javax.swing.*;
@@ -16,7 +17,12 @@ public class MyPaint extends JFrame {
     private final DrawPanel drawPanel;
     private final JRadioButton rbLine,rbCircle,rbRect;
     private final ButtonGroup btnGroup;
-    private int drawType=0;//绘图类型模式,0-直线 ,1-圆
+    private int drawType=0;//绘图类型模式,0-直线 ,1-圆 2-矩形
+
+    //for rect
+    private Rect rect;
+    private List<Rect> rectList= new ArrayList<>();
+    private Point rectP1=null, rectP2=null;
 
     //for circle
     private Circle circle;
@@ -68,6 +74,16 @@ public class MyPaint extends JFrame {
                 }
             }
 
+            if(rectList.size()>0){
+                for (int i=0;i<rectList.size();i++){
+                    rectP1=rectList.get(i).point1;
+                    rectP2=rectList.get(i).point2;
+                    int width=rectP2.x-rectP1.x;
+                    int height= rectP2.y-rectP1.y;
+                    g2d.drawRect(rectP1.x,rectP1.y,width,height);
+                }
+            }
+
 
 
 
@@ -85,6 +101,9 @@ public class MyPaint extends JFrame {
                 }else if(drawType==1){
                     circle = new Circle();
                     circle.point1=e.getPoint();
+                }else if(drawType==2){
+                    rect = new Rect();
+                    rect.point1=e.getPoint();
                 }
 
                 isPrePosSet=true;
@@ -95,6 +114,9 @@ public class MyPaint extends JFrame {
                 }else if(drawType==1){
                     circle.point2=e.getPoint();
                     circleList.add(circle);
+                }else if(drawType==2){
+                    rect.point2=e.getPoint();
+                    rectList.add(rect);
                 }
 
                 isPrePosSet=false;
@@ -117,13 +139,14 @@ public class MyPaint extends JFrame {
                 if (drawType==0){
                     line.curPos=e.getPoint();
                     lineList.add(line);
-                    drawPanel.repaint();
                 }else if(drawType==1){
                     circle.point2=e.getPoint();
                     circleList.add(circle);
-                    drawPanel.repaint();
+                }else if (drawType==2){
+                    rect.point2=e.getPoint();
+                    rectList.add(rect);
                 }
-
+                drawPanel.repaint();
             }
 
         }
@@ -141,6 +164,13 @@ public class MyPaint extends JFrame {
            @Override
            public void itemStateChanged(ItemEvent e) {
                drawType=1;
+           }
+       });
+
+       rbRect.addItemListener(new ItemListener() {
+           @Override
+           public void itemStateChanged(ItemEvent e) {
+               drawType=2;
            }
        });
     }
