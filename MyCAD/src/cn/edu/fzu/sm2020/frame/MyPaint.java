@@ -23,6 +23,8 @@ public class MyPaint extends JFrame {
     private Color currentColor=Color.BLACK;
     private int currentWidth=1;
     private int drawType=0;//绘图类型模式,0-直线 ,1-圆 2-矩形
+    private boolean isPrePosSet=false;
+    private int ctrlForCircle2=0;//1代表第一点画了,2代表第二点画了,第三点画了就回到0
 
     //fot star
     private Star star;
@@ -49,7 +51,6 @@ public class MyPaint extends JFrame {
     private Point prePos=null,curPos=null;
     private Line line;
     private List<Line> lineList = new ArrayList<>();
-    private boolean isPrePosSet=false;
 
 
 
@@ -108,24 +109,29 @@ public class MyPaint extends JFrame {
                     c2p2=circle2List.get(i).point2;
                     c2p3=circle2List.get(i).point3;
 
-                    Point midP1=null,midP2=null;
+                    Point midP1=new Point(),midP2=new Point();
                     midP1.x=(c2p2.x+c2p1.x)/2;
                     midP1.y=(c2p2.y+c2p1.y)/2;
 
                     midP2.x=(c2p3.x+c2p1.x)/2;
                     midP2.y=(c2p3.y+c2p1.y)/2;
 
-                    float k1=-(c2p2.x-c2p1.x)/(c2p2.y-c2p1.y);
-                    float k2=-(c2p3.x-c2p1.x)/(c2p3.y-c2p1.y);
+                    try{
+                        float k1=-(c2p2.x-c2p1.x)/(c2p2.y-c2p1.y);
+                        float k2=-(c2p3.x-c2p1.x)/(c2p3.y-c2p1.y);
 
-                    int cx=(int)((midP2.y-midP1.y-k2*midP2.x+k1*midP1.x)/(k1-k2)+0.5);
-                    int cy=(int)(midP1.y+k1*(midP2.y-midP1.y-k2*midP2.x+k2*midP1.x)/(k1+k2)+0.5);
+                        int cx=(int)((midP2.y-midP1.y-k2*midP2.x+k1*midP1.x)/(k1-k2)+0.5);
+                        int cy=(int)(midP1.y+k1*(midP2.y-midP1.y-k2*midP2.x+k2*midP1.x)/(k1+k2)+0.5);
 
-                    int radius=(int)(Math.sqrt(Math.pow((cx-c2p1.x),2)+Math.pow((cy-c2p1.y),2))+0.5);
-                    int diameter=radius*2;
+                        int radius=(int)(Math.sqrt(Math.pow((cx-c2p1.x),2)+Math.pow((cy-c2p1.y),2))+0.5);
+                        int diameter=radius*2;
 
-                    Point startPoint=new Point(cx-radius,cy-radius);
-                    g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
+                        Point startPoint=new Point(cx-radius,cy-radius);
+                        g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
+                    }catch (Exception e2){
+                        System.out.println("/0!");
+                    }
+
 
 
 
@@ -160,21 +166,22 @@ public class MyPaint extends JFrame {
                     int x1=starP1.x, y1=starP1.y;
                     int radius= (int)(Math.sqrt(Math.pow(starP1.x-starP2.x,2)
                             +Math.pow(starP1.y-starP2.y,2))+0.5);
+                    double offset=0.5;
                     double a=Math.cos(0.1*Math.PI),b=Math.cos(0.3*Math.PI)
                             ,c=Math.sin(0.1*Math.PI),d=Math.sin(0.3*Math.PI)
                             ,e=Math.tan(0.4*Math.PI),f=Math.cos(0.2*Math.PI)
-                            ,h=radius*(1-c)/e;
+                            ,h=radius*(1-c)/e,j=Math.sin(0.2*Math.PI);
 
                     Point p1=new Point(x1,y1-radius);
-                    Point p2=new Point((int)(x1+h),(int)(y1-radius*c));
-                    Point p3=new Point((int)(x1+radius*a),(int)(y1-radius*c));
-                    Point p4=new Point((int)(x1+(2*h*b)),(int)((y1+h/f)-2*h*d));
-                    Point p5=new Point((int)(x1+radius*b),(int)(y1+radius*d));
-                    Point p6=new Point(x1,(int)(y1+h/f));
-                    Point p7=new Point((int)(x1-radius*b),(int)(y1+radius*d));
-                    Point p8=new Point((int)(x1-(2*h*b)),(int)((y1+h/f)-2*h*d));
-                    Point p9=new Point((int)(x1-radius*a),(int)(y1-radius*c));
-                    Point p10=new Point((int)(x1-h),(int)(y1-radius*c));
+                    Point p2=new Point((int)(x1+h+offset),(int)(y1-radius*c+offset));
+                    Point p3=new Point((int)(x1+radius*a+offset),(int)(y1-radius*c+offset));
+                    Point p4=new Point((int)(x1+(2*h*f)+offset),(int)((y1+h/f)-2*h*j+offset));
+                    Point p5=new Point((int)(x1+radius*b+offset),(int)(y1+radius*d+offset));
+                    Point p6=new Point(x1,(int)(y1+h/f+offset));
+                    Point p7=new Point((int)(x1-radius*b+offset),(int)(y1+radius*d+offset));
+                    Point p8=new Point((int)(x1-(2*h*f)+offset),(int)((y1+h/f)-2*h*j+offset));
+                    Point p9=new Point((int)(x1-radius*a+offset),(int)(y1-radius*c+offset));
+                    Point p10=new Point((int)(x1-h+offset),(int)(y1-radius*c+offset));
 
 
                     int x[]=new int[]{p1.x,p2.x,p3.x,p4.x,p5.x,p6.x,p7.x,p8.x,p9.x,p10.x};
@@ -235,6 +242,26 @@ public class MyPaint extends JFrame {
                 isPrePosSet=false;
                 drawPanel.repaint();
             }
+
+            //for circle2
+            if(drawType==4){
+                if(ctrlForCircle2==0){
+                    circle2=new Circle2();
+                    circle2.point1=e.getPoint();
+                    ctrlForCircle2=1;
+                }else if(ctrlForCircle2==1){
+                    circle2.point2=e.getPoint();
+                    ctrlForCircle2=2;
+                }else if(ctrlForCircle2==2) {
+                    circle2.point3=e.getPoint();
+                    circle2List.add(circle2);
+                    ctrlForCircle2=0;
+                    drawPanel.repaint();
+                }
+
+            }
+
+
         }
 
 //        @Override
@@ -261,6 +288,14 @@ public class MyPaint extends JFrame {
                 }else if(drawType==3){
                     star.point2=e.getPoint();
                     starList.add(star);
+                }
+                drawPanel.repaint();
+            }
+
+            if(drawType==4){
+                if(ctrlForCircle2==2){
+                    circle2.point3=e.getPoint();
+                    circle2List.add(circle2);
                 }
                 drawPanel.repaint();
             }
@@ -297,11 +332,9 @@ public class MyPaint extends JFrame {
            }
        });
 
-       rbStar.addItemListener(new ItemListener() {
+       rbCircle2.addItemListener(new ItemListener() {
            @Override
-           public void itemStateChanged(ItemEvent e) {
-               drawType=4;
-           }
+           public void itemStateChanged(ItemEvent e) { drawType=4; }
        });
 
 
