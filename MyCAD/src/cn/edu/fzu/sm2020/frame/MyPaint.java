@@ -22,8 +22,11 @@ public class MyPaint extends JFrame {
     private JButton setWidthButton;
     private JButton saveBtn;
     private JButton openBtn;
+    private JButton deleteBtn;
     private JRadioButton rbSelect;
     private AllShape allShape;
+    private Line currentSelectLineTemp;
+    private Line currentSelectLine;
 
 
 
@@ -53,8 +56,6 @@ public class MyPaint extends JFrame {
     //for line
     private Point prePos=null,curPos=null;
     private Line line;
-
-
 
 
     class DrawPanel extends JPanel implements KeyListener{
@@ -214,6 +215,21 @@ public class MyPaint extends JFrame {
                 }
             }
 
+            if (currentSelectLineTemp!=null){
+                Point p1=currentSelectLineTemp.point1;
+                Point p2=currentSelectLineTemp.point2;
+                g2d.setColor(Color.RED);
+                g2d.drawRect(p1.x-5,p1.y-5,10,10);
+                g2d.drawRect(p2.x-5,p2.y-5,10,10);
+            }
+
+            if (currentSelectLine!=null){
+                Point p1=currentSelectLine.point1;
+                Point p2=currentSelectLine.point2;
+                g2d.setColor(Color.BLUE);
+                g2d.drawRect(p1.x-5,p1.y-5,10,10);
+                g2d.drawRect(p2.x-5,p2.y-5,10,10);
+            }
 
 
         }
@@ -310,6 +326,16 @@ public class MyPaint extends JFrame {
 
             }
 
+            //for select mode
+            if (drawType==1000){
+                if (currentSelectLineTemp!=null){
+                    currentSelectLine=currentSelectLineTemp;
+                    currentSelectLineTemp=null;
+                    drawPanel.repaint();
+                    deleteBtn.setEnabled(true);
+                }
+            }
+
 
         }
 
@@ -357,9 +383,15 @@ public class MyPaint extends JFrame {
                     int m_p1=getDistance(e.getPoint(),l.point1);
                     int m_p2=getDistance(e.getPoint(),l.point2);
                     if ((m_p1+m_p2)<(p1_p2+2)){
-                        System.out.println("接近"+new Date().getTime());
+                        currentSelectLineTemp=l;
+                        System.out.println(new Date().getTime());
+                        break;
+                    }
+                    else{
+                        currentSelectLineTemp=null;
                     }
                 }
+                drawPanel.repaint();
             }
 
         }
@@ -531,6 +563,20 @@ public class MyPaint extends JFrame {
                jd.setVisible(true);
            }
        });
+
+       deleteBtn.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               if(currentSelectLine!=null){
+                   allShape.getLineList().remove(currentSelectLine);
+                   currentSelectLine=null;
+               }
+               deleteBtn.setEnabled(false);
+               drawPanel.repaint();
+           }
+       });
+
+
     }
 
     private int getDistance(Point p1,Point p2){
@@ -568,6 +614,7 @@ public class MyPaint extends JFrame {
         rbCircle2=new JRadioButton("三点画圆");
         colorButton=new JButton("颜色");
         setWidthButton=new JButton("宽度: "+currentWidth);
+        deleteBtn=new JButton("删除");
         rbSelect=new JRadioButton("选择");
         allShape=new AllShape();
 
@@ -585,6 +632,8 @@ public class MyPaint extends JFrame {
         //默认直线模式
         rbLine.setSelected(true);
 
+        deleteBtn.setEnabled(false);//删除按钮默认不可用
+
         ctrlPanel1.add(saveBtn);
         ctrlPanel1.add(openBtn);
         ctrlPanel1.add(rbLine);
@@ -594,6 +643,7 @@ public class MyPaint extends JFrame {
         ctrlPanel1.add(rbCircle2);
         ctrlPanel1.add(colorButton);
         ctrlPanel1.add(setWidthButton);
+        ctrlPanel1.add(deleteBtn);
         ctrlPanel1.add(rbSelect);
         this.add(ctrlPanel1,BorderLayout.NORTH);
         this.add(drawPanel);
