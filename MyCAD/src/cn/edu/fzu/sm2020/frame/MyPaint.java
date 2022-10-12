@@ -10,6 +10,7 @@ import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class MyPaint extends JFrame {
@@ -568,11 +569,13 @@ public class MyPaint extends JFrame {
            @Override
            public void actionPerformed(ActionEvent e) {
                if(currentSelectLine!=null){
-                   allShape.getLineList().remove(currentSelectLine);
+                    allShape.getLineList().removeIf(val->val==currentSelectLine);
+                   int index= allShape.getLineList().indexOf(currentSelectLine);
+                   System.out.println(index);
                    currentSelectLine=null;
+                   drawPanel.repaint();
                }
                deleteBtn.setEnabled(false);
-               drawPanel.repaint();
            }
        });
 
@@ -657,9 +660,6 @@ public class MyPaint extends JFrame {
         initBtnsListener();
         colorButton.setBackground(currentColor);
 
-        //热键
-        ctrlPanel1.getInputMap().put(KeyStroke.getKeyStroke("F2"),"quit");
-        //ctrlPanel1.getActionMap().put("quit",);
 
     }
 
