@@ -1,8 +1,9 @@
 package cn.edu.fzu.sm2020.shape;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Star {
+public class Star implements Serializable {
     public Star() {
         this.point1 = null;
         this.point2 = null;

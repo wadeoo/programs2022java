@@ -1,8 +1,9 @@
 package cn.edu.fzu.sm2020.shape;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Rect {
+public class Rect implements Serializable {
     public Rect() {
         this.point1 = null;
         this.point2 = null;

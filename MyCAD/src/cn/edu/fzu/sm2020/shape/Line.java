@@ -1,8 +1,9 @@
 package cn.edu.fzu.sm2020.shape;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Line {
+public class Line implements Serializable {
 
     public  Line(){
         this.point1=null;

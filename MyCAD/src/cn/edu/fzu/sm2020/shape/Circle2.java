@@ -1,8 +1,9 @@
 package cn.edu.fzu.sm2020.shape;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Circle2 {
+public class Circle2 implements Serializable {
 
     public Circle2() {
         point1 = null;

@@ -3,8 +3,11 @@ package cn.edu.fzu.sm2020.frame;
 import cn.edu.fzu.sm2020.shape.*;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +19,10 @@ public class MyPaint extends JFrame {
     private final ButtonGroup btnGroup;
     private JButton colorButton;
     private JButton setWidthButton;
-
+    private JButton saveBtn;
+    private JButton openBtn;
+    private JRadioButton rbSelect;
+    private AllShape allShape;
 
 
 
@@ -28,34 +34,34 @@ public class MyPaint extends JFrame {
 
     //fot star
     private Star star;
-    private List<Star>  starList=new ArrayList<>();
+    private List<Star>  starList;
     private  Point starP1=null,starP2=null;
 
     //for rect
     private Rect rect;
-    private List<Rect> rectList= new ArrayList<>();
+    private List<Rect> rectList;
     private Point rectP1=null, rectP2=null;
 
     //for circle
     private Circle circle;
-    private List<Circle> circleList= new ArrayList<>();
+    private List<Circle> circleList;
     private Point p1=null,p2=null;
 
     //for circle2
     private  Circle2 circle2;
-    private  List<Circle2> circle2List=new ArrayList<>();
+    private  List<Circle2> circle2List;
     private Point c2p1=null,c2p2=null,c2p3=null;
 
 
     //for line
     private Point prePos=null,curPos=null;
     private Line line;
-    private List<Line> lineList = new ArrayList<>();
+    private List<Line> lineList;
 
 
 
 
-    class DrawPanel extends JPanel{
+    class DrawPanel extends JPanel implements KeyListener{
         public DrawPanel() {
             setBackground(Color.WHITE);
             addMouseListener(new MyMouseAdapter());//为绘图区域添加鼠标侦听器
@@ -215,6 +221,24 @@ public class MyPaint extends JFrame {
 
 
         }
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            if (e.getKeyCode()==KeyEvent.VK_Q){
+                System.exit(0);
+                System.out.println("?????");
+            }
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+
+        }
     }
 
     class MyMouseAdapter extends MouseAdapter{
@@ -227,40 +251,46 @@ public class MyPaint extends JFrame {
                     line.point1 = e.getPoint();
                     line.color=currentColor;
                     line.width=currentWidth;
+                    isPrePosSet=true;
                 }else if(drawType==1){
                     circle = new Circle();
                     circle.point1=e.getPoint();
                     circle.color=currentColor;
                     circle.width=currentWidth;
+                    isPrePosSet=true;
                 }else if(drawType==2){
                     rect = new Rect();
                     rect.point1=e.getPoint();
                     rect.color=currentColor;
                     rect.width=currentWidth;
+                    isPrePosSet=true;
                 }else if (drawType==3){
                     star=new Star();
                     star.point1=e.getPoint();
                     star.color=currentColor;
                     star.width=currentWidth;
+                    isPrePosSet=true;
                 }
 
-                isPrePosSet=true;
             }else{
                 if(drawType==0){
                     line.point2=e.getPoint();
                     lineList.add(line);
+                    isPrePosSet=false;
                 }else if(drawType==1){
                     circle.point2=e.getPoint();
                     circleList.add(circle);
+                    isPrePosSet=false;
                 }else if(drawType==2){
                     rect.point2=e.getPoint();
                     rectList.add(rect);
+                    isPrePosSet=false;
                 }else if(drawType==3){
                     star.point2=e.getPoint();
                     starList.add(star);
+                    isPrePosSet=false;
                 }
 
-                isPrePosSet=false;
                 drawPanel.repaint();
             }
 
@@ -299,6 +329,7 @@ public class MyPaint extends JFrame {
         public void mouseMoved(MouseEvent e){
             super.mouseMoved(e);
             if(isPrePosSet){
+                System.out.println(isPrePosSet);
                 if (drawType==0){
                     line.point2=e.getPoint();
                     lineList.add(line);
@@ -327,10 +358,70 @@ public class MyPaint extends JFrame {
     }
 
     private void initBtnsListener() {
+
+
+        saveBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               JFileChooser  fileChooser=new JFileChooser("D:/BASIC/Desktop");
+                FileNameExtensionFilter fileNameExtensionFilter
+                        =new FileNameExtensionFilter("CAD(*.cad)"
+                        ,"cad");
+                fileChooser.setFileFilter(fileNameExtensionFilter);
+                fileChooser.showSaveDialog(MyPaint.this);
+                File file = fileChooser.getSelectedFile();
+
+                if(file!=null){
+                    if (!file.getPath().endsWith(".cad")){
+                        file=new File(file.getPath()+".cad");
+                    }
+                    try{
+                        FileOutputStream fos=new FileOutputStream(file.getAbsolutePath());
+                        ObjectOutputStream oos=new ObjectOutputStream(fos);
+                        oos.writeObject(allShape); //将所有图形的对象写到对象输出流
+                        oos.close();
+                        fos.close();
+                    }catch (Exception e1){
+                        e1.printStackTrace();
+                    }
+                }
+
+            }
+        });
+
+        openBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser  fileChooser=new JFileChooser("D:/BASIC/Desktop");
+                FileNameExtensionFilter fileNameExtensionFilter
+                        =new FileNameExtensionFilter("CAD(*.cad)"
+                        ,"cad");
+                fileChooser.setFileFilter(fileNameExtensionFilter);
+                fileChooser.showOpenDialog(MyPaint.this);
+                File file = fileChooser.getSelectedFile();
+
+                try{
+                        FileInputStream fis=new FileInputStream(file);
+                        ObjectInputStream ois=new ObjectInputStream(fis);
+                        allShape= (AllShape) ois.readObject(); //将所有图形的对象写到对象输出流
+                        ois.close();
+                        fis.close();
+                        drawPanel.repaint();
+                }catch (Exception e1){
+                        e1.printStackTrace();
+                    }
+                System.out.println(file.getPath());
+            }
+        });
+
+
+
        rbLine.addItemListener(new ItemListener() {
            @Override
            public void itemStateChanged(ItemEvent e) {
                drawType=0;
+               Cursor cursor=new Cursor(Cursor.CROSSHAIR_CURSOR);
+               drawPanel.setCursor(cursor);
            }
        });
 
@@ -338,6 +429,8 @@ public class MyPaint extends JFrame {
            @Override
            public void itemStateChanged(ItemEvent e) {
                drawType=1;
+               Cursor cursor=new Cursor(Cursor.CROSSHAIR_CURSOR);
+               drawPanel.setCursor(cursor);
            }
        });
 
@@ -345,6 +438,8 @@ public class MyPaint extends JFrame {
            @Override
            public void itemStateChanged(ItemEvent e) {
                drawType=2;
+               Cursor cursor=new Cursor(Cursor.CROSSHAIR_CURSOR);
+               drawPanel.setCursor(cursor);
            }
        });
 
@@ -352,14 +447,27 @@ public class MyPaint extends JFrame {
            @Override
            public void itemStateChanged(ItemEvent e) {
                drawType=3;
+               Cursor cursor=new Cursor(Cursor.CROSSHAIR_CURSOR);
+               drawPanel.setCursor(cursor);
            }
        });
 
        rbCircle2.addItemListener(new ItemListener() {
            @Override
-           public void itemStateChanged(ItemEvent e) { drawType=4; }
+           public void itemStateChanged(ItemEvent e) { drawType=4;
+               Cursor cursor=new Cursor(Cursor.CROSSHAIR_CURSOR);
+               drawPanel.setCursor(cursor);
+           }
        });
 
+       rbSelect.addItemListener(new ItemListener() {
+           @Override
+           public void itemStateChanged(ItemEvent e) {
+               drawType=1000;//表示选择状态
+               Cursor cursor=new Cursor(Cursor.HAND_CURSOR);
+               drawPanel.setCursor(cursor);
+           }
+       });
 
        colorButton.addActionListener(new ActionListener() {
            @Override
@@ -435,6 +543,8 @@ public class MyPaint extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //属性声明
+        saveBtn=new JButton("保存");
+        openBtn=new JButton("打开");
         ctrlPanel1 =new JPanel();
         drawPanel=new DrawPanel();
         btnGroup=new ButtonGroup();
@@ -445,9 +555,15 @@ public class MyPaint extends JFrame {
         rbCircle2=new JRadioButton("三点画圆");
         colorButton=new JButton("颜色");
         setWidthButton=new JButton("宽度: "+currentWidth);
+        rbSelect=new JRadioButton("选择");
+        allShape=new AllShape();
 
 
-
+        lineList=allShape.getLineList();
+        circle2List=allShape.getCircle2List();
+        circleList=allShape.getCircleList();
+        rectList=allShape.getRectList();
+        starList=allShape.getStarList();
 
         //按钮分组
         btnGroup.add(rbLine);
@@ -455,10 +571,13 @@ public class MyPaint extends JFrame {
         btnGroup.add(rbRect);
         btnGroup.add(rbStar);
         btnGroup.add(rbCircle2);
+        btnGroup.add(rbSelect);
 
         //默认直线模式
         rbLine.setSelected(true);
 
+        ctrlPanel1.add(saveBtn);
+        ctrlPanel1.add(openBtn);
         ctrlPanel1.add(rbLine);
         ctrlPanel1.add(rbCircle);
         ctrlPanel1.add(rbRect);
@@ -466,8 +585,10 @@ public class MyPaint extends JFrame {
         ctrlPanel1.add(rbCircle2);
         ctrlPanel1.add(colorButton);
         ctrlPanel1.add(setWidthButton);
-        add(ctrlPanel1,BorderLayout.NORTH);
-        add(drawPanel);
+        ctrlPanel1.add(rbSelect);
+        this.add(ctrlPanel1,BorderLayout.NORTH);
+        this.add(drawPanel);
+        this.addKeyListener(drawPanel);
 
         //
         initBtnsListener();

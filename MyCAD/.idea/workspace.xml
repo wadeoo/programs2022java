@@ -2,9 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7244393-bd4c-4b9b-9a74-35ece87320b5" name="默认" comment="">
+      <change afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/AllShape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$7$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$7$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$DrawPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$DrawPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseMotionAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseMotionAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Line.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rect.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Star.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Star.java" afterDir="false" />
     </list>
@@ -15,35 +31,44 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/MyCAD$Main.ic" NAME="Main Coverage Results" MODIFIED="1665536540872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>cn.edu.fzu.sm2020.*</FILTER>
+    </SUITE>
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="125" />
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-1262862758">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="2" />
-          <entry key="project.opened" value="4" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="36" />
+          <entry key="java" value="40" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="36" />
+          <entry key="JAVA" value="40" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="20739" />
+          <entry key="java" value="22921" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="20739" />
+          <entry key="JAVA" value="22921" />
         </counts>
       </usages-collector>
     </session>
@@ -53,8 +78,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="243" column="44" selection-start-line="243" selection-start-column="44" selection-end-line="243" selection-end-column="44" />
+            <state relative-caret-position="995">
+              <caret line="459" column="11" selection-start-line="459" selection-start-column="11" selection-end-line="459" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -63,37 +88,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Star.java">
+        <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+            <state relative-caret-position="136">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rect.java">
+        <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/AllShape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+            <state relative-caret-position="68">
+              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#277#278#0" expanded="true" />
+                <element signature="e#308#309#0" expanded="true" />
+                <element signature="e#571#572#0" expanded="true" />
+                <element signature="e#605#606#0" expanded="true" />
+                <element signature="e#648#649#0" expanded="true" />
+                <element signature="e#681#682#0" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
+                <element signature="e#751#752#0" expanded="true" />
+                <element signature="e#790#791#0" expanded="true" />
+                <element signature="e#821#822#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -107,6 +130,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>cursor</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -117,6 +145,7 @@
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/Main.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rectangle.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Pentagon.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/AllShape.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Line.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle2.java" />
@@ -134,8 +163,8 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
-    <option name="width" value="1245" />
-    <option name="height" value="1048" />
+    <option name="width" value="977" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="添加" />
@@ -145,6 +174,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -181,14 +211,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665407456582" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665542950296" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../wadeoo programs2022java master MyCAD" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -238,18 +267,19 @@
       <workItem from="1665016181024" duration="13656000" />
       <workItem from="1665361280309" duration="18466000" />
       <workItem from="1665386353731" duration="10837000" />
-      <workItem from="1665417059179" duration="789000" />
+      <workItem from="1665417059179" duration="865000" />
+      <workItem from="1665534338850" duration="8522000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43748000" />
+    <option name="totallyTimeSpent" value="52346000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="0" width="996" height="838" extended-state="0" />
+    <frame x="-6" y="0" width="781" height="830" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18017058" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.045643155" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="设计器" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -258,7 +288,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1929078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.19512194" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -269,6 +299,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="调试" order="11" weight="0.32894737" />
       <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32942432" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -343,16 +374,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/../../java-1.8.0-openjdk-1.8.0.265/java-1.8.0-openjdk-1.8.0.265-1.b01.ojdkbuild.windows.x86_64/src.zip!/java/awt/Graphics2D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -376,43 +397,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Line.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="19" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+        <state relative-caret-position="85">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
+        <state relative-caret-position="85">
+          <caret line="5" column="45" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Rect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="15" selection-start-line="9" selection-start-column="15" selection-end-line="9" selection-end-column="15" />
+        <state relative-caret-position="85">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Star.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        <state relative-caret-position="85">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/AllShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#277#278#0" expanded="true" />
+            <element signature="e#308#309#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+            <element signature="e#605#606#0" expanded="true" />
+            <element signature="e#648#649#0" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="true" />
+            <element signature="e#821#822#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="243" column="44" selection-start-line="243" selection-start-column="44" selection-end-line="243" selection-end-column="44" />
+        <state relative-caret-position="995">
+          <caret line="459" column="11" selection-start-line="459" selection-start-column="11" selection-end-line="459" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
