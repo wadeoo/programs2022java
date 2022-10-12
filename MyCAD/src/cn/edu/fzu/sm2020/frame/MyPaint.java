@@ -9,6 +9,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MyPaint extends JFrame {
@@ -352,7 +353,12 @@ public class MyPaint extends JFrame {
             if(drawType==1000){
                 for (int i=0;i<allShape.getLineList().size();i++){
                     Line l=allShape.getLineList().get(i);
-                    //int p1_p2=getDistance(l.)
+                    int p1_p2=getDistance(l.point1,l.point2);
+                    int m_p1=getDistance(e.getPoint(),l.point1);
+                    int m_p2=getDistance(e.getPoint(),l.point2);
+                    if ((m_p1+m_p2)<(p1_p2+2)){
+                        System.out.println("接近"+new Date().getTime());
+                    }
                 }
             }
 
@@ -527,6 +533,11 @@ public class MyPaint extends JFrame {
        });
     }
 
+    private int getDistance(Point p1,Point p2){
+        int x1=p1.x, y1=p1.y, x2=p2.x, y2=p2.y;
+        int d=(int)(Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))+0.5);
+        return d;
+    }
 
     public MyPaint(String title,Dimension frameDim) throws HeadlessException {
 
