@@ -34,29 +34,24 @@ public class MyPaint extends JFrame {
 
     //fot star
     private Star star;
-    private List<Star>  starList;
     private  Point starP1=null,starP2=null;
 
     //for rect
     private Rect rect;
-    private List<Rect> rectList;
     private Point rectP1=null, rectP2=null;
 
     //for circle
     private Circle circle;
-    private List<Circle> circleList;
     private Point p1=null,p2=null;
 
     //for circle2
     private  Circle2 circle2;
-    private  List<Circle2> circle2List;
     private Point c2p1=null,c2p2=null,c2p3=null;
 
 
     //for line
     private Point prePos=null,curPos=null;
     private Line line;
-    private List<Line> lineList;
 
 
 
@@ -78,12 +73,12 @@ public class MyPaint extends JFrame {
            Graphics2D g2d=(Graphics2D)g;
 
            //draw lines
-           if(lineList.size()>0){
-                for(int i=0;i<lineList.size();i++){
-                    prePos=lineList.get(i).point1;
-                    curPos=lineList.get(i).point2;
-                    g2d.setColor(lineList.get(i).color);
-                    BasicStroke bs=new BasicStroke(lineList.get(i).width
+           if(allShape.getLineList().size()>0){
+                for(int i=0;i<allShape.getLineList().size();i++){
+                    prePos=allShape.getLineList().get(i).point1;
+                    curPos=allShape.getLineList().get(i).point2;
+                    g2d.setColor(allShape.getLineList().get(i).color);
+                    BasicStroke bs=new BasicStroke(allShape.getLineList().get(i).width
                             ,BasicStroke.JOIN_ROUND
                             ,BasicStroke.JOIN_ROUND);
                     g2d.setStroke(bs);
@@ -92,28 +87,28 @@ public class MyPaint extends JFrame {
            }
 
            //draw circles
-            if(circleList.size()>0){
-                for (int i=0;i<circleList.size();i++){
-                    p1=circleList.get(i).point1;
-                    p2=circleList.get(i).point2;
+            if(allShape.getCircleList().size()>0){
+                for (int i=0;i<allShape.getCircleList().size();i++){
+                    p1=allShape.getCircleList().get(i).point1;
+                    p2=allShape.getCircleList().get(i).point2;
                     int radius= (int)(Math.sqrt(Math.pow(p1.x-p2.x,2)+Math.pow(p1.y-p2.y,2))+0.5);
                     Point startPoint =new Point(p1.x-radius,p1.y-radius);
                     int diameter = radius*2;
-                    BasicStroke bs=new BasicStroke(circleList.get(i).width
+                    BasicStroke bs=new BasicStroke(allShape.getCircleList().get(i).width
                             ,BasicStroke.JOIN_ROUND
                             ,BasicStroke.JOIN_ROUND);
                     g2d.setStroke(bs);
-                    g2d.setColor(circleList.get(i).color);
+                    g2d.setColor(allShape.getCircleList().get(i).color);
                     g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
                 }
             }
 
             //draw circle2s(3 points)
-            if(circle2List.size()>0){
-                for (int i=0;i<circle2List.size();i++){
-                    c2p1=circle2List.get(i).point1;
-                    c2p2=circle2List.get(i).point2;
-                    c2p3=circle2List.get(i).point3;
+            if(allShape.getCircle2List().size()>0){
+                for (int i=0;i<allShape.getCircle2List().size();i++){
+                    c2p1=allShape.getCircle2List().get(i).point1;
+                    c2p2=allShape.getCircle2List().get(i).point2;
+                    c2p3=allShape.getCircle2List().get(i).point3;
 
                     Point midP1=new Point(),midP2=new Point();
                     midP1.x=(c2p2.x+c2p1.x)/2;
@@ -134,11 +129,11 @@ public class MyPaint extends JFrame {
 
                         Point startPoint=new Point(cx-radius,cy-radius);
 
-                        BasicStroke bs=new BasicStroke(circle2List.get(i).width
+                        BasicStroke bs=new BasicStroke(allShape.getCircle2List().get(i).width
                                 ,BasicStroke.JOIN_ROUND
                                 ,BasicStroke.JOIN_ROUND);
                         g2d.setStroke(bs);
-                        g2d.setColor(circle2List.get(i).color);
+                        g2d.setColor(allShape.getCircle2List().get(i).color);
 
                         g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
                     }catch (Exception e2){
@@ -152,19 +147,19 @@ public class MyPaint extends JFrame {
             }
 
             //draw rectangles
-            if(rectList.size()>0){
-                for (int i=0;i<rectList.size();i++){
-                    rectP1=rectList.get(i).point1;
-                    rectP2=rectList.get(i).point2;
+            if(allShape.getRectList().size()>0){
+                for (int i=0;i<allShape.getRectList().size();i++){
+                    rectP1=allShape.getRectList().get(i).point1;
+                    rectP2=allShape.getRectList().get(i).point2;
                     int width=rectP2.x-rectP1.x;
                     int height=rectP2.y-rectP1.y;
 
-                    BasicStroke bs=new BasicStroke(rectList.get(i).width
+                    BasicStroke bs=new BasicStroke(allShape.getRectList().get(i).width
                             ,BasicStroke.JOIN_ROUND
                             ,BasicStroke.JOIN_ROUND);
                     g2d.setStroke(bs);
 
-                    g2d.setColor(rectList.get(i).color);
+                    g2d.setColor(allShape.getRectList().get(i).color);
                     if(width<0&&height>0){
                         g2d.drawRect(rectP2.x,rectP1.y,-width,height);
                     }else if(width<0&&height<0){
@@ -178,10 +173,10 @@ public class MyPaint extends JFrame {
             }
 
             //draw star
-            if (starList.size()>0){
-                for (int i=0;i<starList.size();i++){
-                    starP1=starList.get(i).point1;
-                    starP2=starList.get(i).point2;
+            if (allShape.getStarList().size()>0){
+                for (int i=0;i<allShape.getStarList().size();i++){
+                    starP1=allShape.getStarList().get(i).point1;
+                    starP2=allShape.getStarList().get(i).point2;
                     int x1=starP1.x, y1=starP1.y;
                     int radius= (int)(Math.sqrt(Math.pow(starP1.x-starP2.x,2)
                             +Math.pow(starP1.y-starP2.y,2))+0.5);
@@ -209,11 +204,11 @@ public class MyPaint extends JFrame {
                     int n=10;
 
                     Polygon plg=new Polygon(x,y,n);
-                    BasicStroke bs=new BasicStroke(starList.get(i).width
+                    BasicStroke bs=new BasicStroke(allShape.getStarList().get(i).width
                             ,BasicStroke.JOIN_ROUND
                             ,BasicStroke.JOIN_ROUND);
                     g2d.setStroke(bs);
-                    g2d.setColor(starList.get(i).color);
+                    g2d.setColor(allShape.getStarList().get(i).color);
                     g2d.drawPolygon(plg);
                 }
             }
@@ -275,19 +270,19 @@ public class MyPaint extends JFrame {
             }else{
                 if(drawType==0){
                     line.point2=e.getPoint();
-                    lineList.add(line);
+                    allShape.getLineList().add(line);
                     isPrePosSet=false;
                 }else if(drawType==1){
                     circle.point2=e.getPoint();
-                    circleList.add(circle);
+                    allShape.getCircleList().add(circle);
                     isPrePosSet=false;
                 }else if(drawType==2){
                     rect.point2=e.getPoint();
-                    rectList.add(rect);
+                    allShape.getRectList().add(rect);
                     isPrePosSet=false;
                 }else if(drawType==3){
                     star.point2=e.getPoint();
-                    starList.add(star);
+                    allShape.getStarList().add(star);
                     isPrePosSet=false;
                 }
 
@@ -307,7 +302,7 @@ public class MyPaint extends JFrame {
                     ctrlForCircle2=2;
                 }else if(ctrlForCircle2==2) {
                     circle2.point3=e.getPoint();
-                    circle2List.add(circle2);
+                    allShape.getCircle2List().add(circle2);
                     ctrlForCircle2=0;
                     drawPanel.repaint();
                 }
@@ -332,16 +327,16 @@ public class MyPaint extends JFrame {
                 System.out.println(isPrePosSet);
                 if (drawType==0){
                     line.point2=e.getPoint();
-                    lineList.add(line);
+                    allShape.getLineList().add(line);
                 }else if(drawType==1){
                     circle.point2=e.getPoint();
-                    circleList.add(circle);
+                    allShape.getCircleList().add(circle);
                 }else if (drawType==2){
                     rect.point2=e.getPoint();
-                    rectList.add(rect);
+                    allShape.getRectList().add(rect);
                 }else if(drawType==3){
                     star.point2=e.getPoint();
-                    starList.add(star);
+                    allShape.getStarList().add(star);
                 }
                 drawPanel.repaint();
             }
@@ -349,9 +344,16 @@ public class MyPaint extends JFrame {
             if(drawType==4){
                 if(ctrlForCircle2==2){
                     circle2.point3=e.getPoint();
-                    circle2List.add(circle2);
+                    allShape.getCircle2List().add(circle2);
                 }
                 drawPanel.repaint();
+            }
+            
+            if(drawType==1000){
+                for (int i=0;i<allShape.getLineList().size();i++){
+                    Line l=allShape.getLineList().get(i);
+                    //int p1_p2=getDistance(l.)
+                }
             }
 
         }
@@ -559,11 +561,7 @@ public class MyPaint extends JFrame {
         allShape=new AllShape();
 
 
-        lineList=allShape.getLineList();
-        circle2List=allShape.getCircle2List();
-        circleList=allShape.getCircleList();
-        rectList=allShape.getRectList();
-        starList=allShape.getStarList();
+    
 
         //按钮分组
         btnGroup.add(rbLine);
@@ -588,7 +586,11 @@ public class MyPaint extends JFrame {
         ctrlPanel1.add(rbSelect);
         this.add(ctrlPanel1,BorderLayout.NORTH);
         this.add(drawPanel);
+
+        //添加键盘监听器
+        this.setVisible(true);
         this.addKeyListener(drawPanel);
+        this.requestFocusInWindow();
 
         //
         initBtnsListener();
