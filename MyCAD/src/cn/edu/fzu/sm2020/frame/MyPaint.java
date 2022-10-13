@@ -12,7 +12,7 @@ import java.util.Iterator;
 public class MyPaint extends JFrame {
 
     private final JPanel ctrlPanel1;
-    private final DrawPanel drawPanel;
+    public final DrawPanel drawPanel;
     private final JRadioButton rbLine,rbCircle,rbRect,rbStar,rbCircle2;
     private final ButtonGroup btnGroup;
     private JButton colorButton;
@@ -20,12 +20,14 @@ public class MyPaint extends JFrame {
     private JButton saveBtn;
     private JButton openBtn;
     private JButton deleteBtn;
+    private JButton editBtn;
     private JRadioButton rbSelect;
     private AllShape allShape;
     private Line currentSelectLineTemp;
-    private Line currentSelectLine;
+    public Line currentSelectLine;
     private Circle currentSelectCircleTemp;
     private Circle currentSelectCircle;
+
 
 
 
@@ -114,8 +116,8 @@ public class MyPaint extends JFrame {
                     c2p2=allShape.getCircle2List().get(i).point2;
                     c2p3=allShape.getCircle2List().get(i).point3;
 
-                    int x[]={c2p1.x,c2p2.x,c2p3.x};
-                    int y[]={c2p1.y,c2p2.y,c2p3.y};
+                    Point center=null;
+
 
                     Point midP1=new Point(),midP2=new Point();
                     midP1.x=(c2p2.x+c2p1.x)/2;
@@ -369,13 +371,23 @@ public class MyPaint extends JFrame {
                     currentSelectLineTemp=null;
                     drawPanel.repaint();
                     deleteBtn.setEnabled(true);
+                    editBtn.setEnabled(true);
+                }else{
+                    currentSelectLine=null;
                 }
+
+
                 if (currentSelectCircleTemp!=null){
                     currentSelectCircle=currentSelectCircleTemp;
                     currentSelectCircleTemp=null;
                     drawPanel.repaint();
                     deleteBtn.setEnabled(true);
+                    editBtn.setEnabled(true);
+                }else{
+                    currentSelectCircle=null;
                 }
+
+
             }
 
 
@@ -419,6 +431,7 @@ public class MyPaint extends JFrame {
             }
             
             if(drawType==1000){
+
                 for (int i=0;i<allShape.getLineList().size();i++){
                     Line l=allShape.getLineList().get(i);
                     int p1_p2=getDistance(l.point1,l.point2);
@@ -652,6 +665,13 @@ public class MyPaint extends JFrame {
            }
        });
 
+       editBtn.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+               EditDialog editDialog=new EditDialog(MyPaint.this);
+
+           }
+       });
 
     }
 
@@ -693,6 +713,7 @@ public class MyPaint extends JFrame {
         setWidthButton=new JButton("宽度: "+currentWidth);
         deleteBtn=new JButton("删除");
         rbSelect=new JRadioButton("选择");
+        editBtn=new JButton("编辑");
         allShape=new AllShape();
 
 
@@ -708,6 +729,7 @@ public class MyPaint extends JFrame {
         rbLine.setSelected(true);
 
         deleteBtn.setEnabled(false);//删除按钮默认不可用
+        editBtn.setEnabled(false);
 
         ctrlPanel1.add(saveBtn);
         ctrlPanel1.add(openBtn);
@@ -720,6 +742,7 @@ public class MyPaint extends JFrame {
         ctrlPanel1.add(setWidthButton);
         ctrlPanel1.add(deleteBtn);
         ctrlPanel1.add(rbSelect);
+        ctrlPanel1.add(editBtn);
         this.add(ctrlPanel1,BorderLayout.NORTH);
         this.add(drawPanel);
 
