@@ -135,36 +135,37 @@ public class MyPaint extends JFrame {
                     c2p2=allShape.getCircle2List().get(i).point2;
                     c2p3=allShape.getCircle2List().get(i).point3;
 
-                    Point center=null;
-
-
-                    Point midP1=new Point(),midP2=new Point();
-                    midP1.x=(c2p2.x+c2p1.x)/2;
-                    midP1.y=(c2p2.y+c2p1.y)/2;
-
-                    midP2.x=(c2p3.x+c2p1.x)/2;
-                    midP2.y=(c2p3.y+c2p1.y)/2;
+                    int x1,x2,x3,y1,y2,y3;
+                    x1=c2p1.x;
+                    x2=c2p2.x;
+                    x3=c2p3.x;
+                    y1=c2p1.y;
+                    y2=c2p2.y;
+                    y3=c2p3.y;
 
                     try{
-                        float k1=-(c2p2.x-c2p1.x)/(c2p2.y-c2p1.y);
-                        float k2=-(c2p3.x-c2p1.x)/(c2p3.y-c2p1.y);
+                       double denominator =4*(y3-y2)*(x2-x1)-4*(y2-y1)*(x3-x2);
+                       int x=(int)((2*(y3-y2)*(x2*x2+y2*y2-x1*x1-y1*y1)-2*(y2-y1)
+                               *(x3*x3+y3*y3-x2*x2-y2*y2))/denominator);
+                       int y=(int)((-2*(x3-x2)*(x2*x2+y2*y2-x1*x1-y1*y1)+2*(x2-x1)
+                                *(x3*x3+y3*y3-x2*x2-y2*y2))/denominator);
 
-                        int cx=(int)((midP2.y-midP1.y-k2*midP2.x+k1*midP1.x)/(k1-k2)+0.5);
-                        int cy=(int)(midP1.y+k1*(midP2.y-midP1.y-k2*midP2.x+k2*midP1.x)/(k1+k2)+0.5);
-
-                        int radius=(int)(Math.sqrt(Math.pow((cx-c2p1.x),2)+Math.pow((cy-c2p1.y),2))+0.5);
+                        System.out.println(x+","+y+","+x1);
+                        int radius=(int)(Math.sqrt((x-x1)*(x-x1)+(y-y1)*(y-y1))+0.5);
                         int diameter=radius*2;
 
-                        Point startPoint=new Point(cx-radius,cy-radius);
+                        Point startPoint=new Point(x-radius,y-radius);
 
                         BasicStroke bs=new BasicStroke(allShape.getCircle2List().get(i).width
                                 ,BasicStroke.JOIN_ROUND
                                 ,BasicStroke.JOIN_ROUND);
                         g2d.setStroke(bs);
+
+                        int ax[]={x1,x2,x3};
+                        int ay[]={y1,y2,y3};
+                        g2d.drawPolygon(ax,ay,3);
+
                         g2d.setColor(allShape.getCircle2List().get(i).color);
-
-
-                      //  g2d.drawPolyline(x,y,3);
                         g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
                     }catch (Exception e2){
                         System.out.println("/0!");
