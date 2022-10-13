@@ -14,7 +14,7 @@ public class AllShape implements Serializable {
     private List<Circle> circleList= new ArrayList<>();
     private List<Rect> rectList= new ArrayList<>();
     private List<Star>  starList=new ArrayList<>();
-    private List<Point> pointList=new ArrayList<>();
+    private List<ArbitraryLine> ArbitraryLineList=new ArrayList<>();
 
 
     public List<Line> getLineList() {
@@ -37,7 +37,8 @@ public class AllShape implements Serializable {
         return starList;
     }
 
-    public List<Point> getPointList() {
-        return pointList;
+
+    public List<ArbitraryLine> getArbitraryLineList() {
+        return ArbitraryLineList;
     }
 }

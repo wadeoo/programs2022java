@@ -59,6 +59,10 @@ public class MyPaint extends JFrame {
     private Point prePos=null,curPos=null;
     private Line line;
 
+    //for arbitrary
+    private ArbitraryLine arbitraryLine;
+    private Point pointForArbitr;
+
 
     class DrawPanel extends JPanel implements KeyListener{
         public DrawPanel() {
@@ -76,11 +80,17 @@ public class MyPaint extends JFrame {
            super.paintComponent(g);
            Graphics2D g2d=(Graphics2D)g;
 
-           if (allShape.getPointList().size()>1){
-               for (int i=0;i<allShape.getPointList().size()-1;i++){
-                   Point p1=allShape.getPointList().get(i);
-                   Point p2=allShape.getPointList().get(i+1);
-                   g2d.drawLine(p1.x,p1.y,p2.x,p2.y);
+           if (allShape.getArbitraryLineList().size()>0){
+               for (int i=0;i<allShape.getArbitraryLineList().size();i++){
+                   if (allShape.getArbitraryLineList().get(i).pointList.size()>1){
+                       System.out.println(""+allShape.getArbitraryLineList().get(i).pointList.size());
+                       for (int j=0;j<allShape.getArbitraryLineList().get(i).pointList.size()-1;j++){
+                           Point p1=allShape.getArbitraryLineList().get(i).pointList.get(j);
+                           Point p2=allShape.getArbitraryLineList().get(i).pointList.get(j+1);
+                           g2d.drawLine(p1.x,p1.y,p2.x,p2.y);
+                       }
+                   }
+
                }
            }
 
@@ -300,6 +310,16 @@ public class MyPaint extends JFrame {
     }
 
     class MyMouseAdapter extends MouseAdapter{
+
+        @Override
+        public void mouseReleased(MouseEvent e){
+            if (drawType==5){
+                arbitraryLine=new ArbitraryLine();
+            }
+        }
+
+
+
         @Override
         public void mousePressed(MouseEvent e){
             super.mousePressed(e);
@@ -420,7 +440,9 @@ public class MyPaint extends JFrame {
         public  void mouseDragged(MouseEvent e){
             super.mouseDragged(e);
             if (drawType==5){
-                allShape.getPointList().add(new Point(e.getX(),e.getY()));
+                pointForArbitr=new Point(e.getX(),e.getY());
+                arbitraryLine.pointList.add(pointForArbitr);
+                allShape.getArbitraryLineList().add(arbitraryLine);
                 drawPanel.repaint();
             }
         }
@@ -753,6 +775,7 @@ public class MyPaint extends JFrame {
         rbArbitrary=new JRadioButton("画笔");
         allShape=new AllShape();
 
+        arbitraryLine=new ArbitraryLine();
 
         //按钮分组
         btnGroup.add(rbLine);

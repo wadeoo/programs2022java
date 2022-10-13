@@ -2,8 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a7244393-bd4c-4b9b-9a74-35ece87320b5" name="默认" comment="">
-      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$10$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$10$2.class" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/ArbitraryLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$11$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$11$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$11$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$11$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$DrawPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$DrawPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseMotionAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint$MyMouseMotionAdapter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/frame/MyPaint.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/shape/AllShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MyCAD/cn/edu/fzu/sm2020/shape/AllShape.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/AllShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/AllShape.java" afterDir="false" />
     </list>
@@ -36,22 +56,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="47" />
+          <entry key="java" value="52" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="47" />
+          <entry key="JAVA" value="52" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="29175" />
+          <entry key="java" value="30284" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="29175" />
+          <entry key="JAVA" value="30284" />
         </counts>
       </usages-collector>
     </session>
@@ -61,8 +81,32 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="82" column="51" selection-start-line="82" selection-start-column="51" selection-end-line="82" selection-end-column="51" />
+            <state relative-caret-position="193">
+              <caret line="88" column="57" selection-start-line="88" selection-start-column="57" selection-end-line="88" selection-end-column="57" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/ArbitraryLine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Line.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -73,20 +117,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/AllShape.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+            <state relative-caret-position="267">
+              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#571#572#0" expanded="true" />
                 <element signature="e#605#606#0" expanded="true" />
-                <element signature="e#648#649#0" expanded="true" />
+                <element signature="e#636#637#0" expanded="true" />
                 <element signature="e#681#682#0" expanded="true" />
-                <element signature="e#720#721#0" expanded="true" />
-                <element signature="e#751#752#0" expanded="true" />
-                <element signature="e#790#791#0" expanded="true" />
-                <element signature="e#821#822#0" expanded="true" />
-                <element signature="e#956#957#0" expanded="true" />
-                <element signature="e#988#989#0" expanded="true" />
+                <element signature="e#715#716#0" expanded="true" />
+                <element signature="e#989#990#0" expanded="true" />
+                <element signature="e#1029#1030#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,6 +173,7 @@
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/EditDialog.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/AllShape.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/ArbitraryLine.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java" />
       </list>
     </option>
@@ -143,11 +184,17 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand />
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="162" />
-    <option name="y" value="70" />
-    <option name="width" value="1413" />
-    <option name="height" value="877" />
+    <option name="x" value="126" />
+    <option name="y" value="137" />
+    <option name="width" value="1130" />
+    <option name="height" value="767" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="添加" />
@@ -206,6 +253,24 @@
               <item name="MyCAD" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sm2020" type="462c0819:PsiDirectoryNode" />
+              <item name="frame" type="462c0819:PsiDirectoryNode" />
+              <item name="MyPaint" type="1a9f42e2:ClassTreeNode" />
+              <item name="MyMouseAdapter" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="MyCAD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCAD" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sm2020" type="462c0819:PsiDirectoryNode" />
+              <item name="frame" type="462c0819:PsiDirectoryNode" />
+              <item name="MyPaint" type="1a9f42e2:ClassTreeNode" />
+              <item name="MyMouseMotionAdapter" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="MyCAD" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCAD" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="sm2020" type="462c0819:PsiDirectoryNode" />
               <item name="shape" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -217,7 +282,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665632275199" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1665639911740" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../wadeoo programs2022java master MyCAD" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -270,18 +335,18 @@
       <workItem from="1665386353731" duration="10837000" />
       <workItem from="1665417059179" duration="865000" />
       <workItem from="1665534338850" duration="18670000" />
-      <workItem from="1665620569009" duration="11561000" />
+      <workItem from="1665620569009" duration="17129000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74055000" />
+    <option name="totallyTimeSpent" value="79623000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="130" y="56" width="1130" height="701" extended-state="0" />
+    <frame x="126" y="137" width="1130" height="767" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2266791" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2271028" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="设计器" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -289,8 +354,8 @@
       <window_info id="UI Designer" order="5" />
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49906716" visible="true" weight="0.18133803" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32874617" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49906716" visible="true" weight="0.38291138" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -310,7 +375,7 @@
       <window_info anchor="right" id="Ant Build" order="6" weight="0.24979524" />
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
-      <window_info anchor="right" id="Maven Projects" order="9" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.32929105" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -401,16 +466,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Line.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Circle2.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -487,30 +542,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/AllShape.java">
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/Line.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="16" column="32" lean-forward="true" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+        <state relative-caret-position="252">
+          <caret line="14" column="23" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#571#572#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/AllShape.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
             <element signature="e#605#606#0" expanded="true" />
-            <element signature="e#648#649#0" expanded="true" />
+            <element signature="e#636#637#0" expanded="true" />
             <element signature="e#681#682#0" expanded="true" />
-            <element signature="e#720#721#0" expanded="true" />
-            <element signature="e#751#752#0" expanded="true" />
-            <element signature="e#790#791#0" expanded="true" />
-            <element signature="e#821#822#0" expanded="true" />
-            <element signature="e#956#957#0" expanded="true" />
-            <element signature="e#988#989#0" expanded="true" />
+            <element signature="e#715#716#0" expanded="true" />
+            <element signature="e#989#990#0" expanded="true" />
+            <element signature="e#1029#1030#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/shape/ArbitraryLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/frame/MyPaint.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="82" column="51" selection-start-line="82" selection-start-column="51" selection-end-line="82" selection-end-column="51" />
+        <state relative-caret-position="193">
+          <caret line="88" column="57" selection-start-line="88" selection-start-column="57" selection-end-line="88" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
