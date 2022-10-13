@@ -9,10 +9,14 @@ public class Circle implements Serializable {
       this.point2 = null;
       this.color=Color.BLACK;
       this.width=1;
+      this.radius=0;
+      this.center=null;
    }
 
    public Point point1;
    public Point point2;
    public Color color;
    public int width;
+   public int radius;
+   public Point center;
 }

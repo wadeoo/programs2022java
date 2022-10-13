@@ -1,17 +1,13 @@
 package cn.edu.fzu.sm2020.frame;
 
 import cn.edu.fzu.sm2020.shape.*;
-
 import javax.swing.*;
-import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
-import java.util.List;
 
 public class MyPaint extends JFrame {
 
@@ -28,6 +24,9 @@ public class MyPaint extends JFrame {
     private AllShape allShape;
     private Line currentSelectLineTemp;
     private Line currentSelectLine;
+    private Circle currentSelectCircleTemp;
+    private Circle currentSelectCircle;
+
 
 
 
@@ -96,6 +95,8 @@ public class MyPaint extends JFrame {
                     p2=allShape.getCircleList().get(i).point2;
                     int radius= (int)(Math.sqrt(Math.pow(p1.x-p2.x,2)+Math.pow(p1.y-p2.y,2))+0.5);
                     Point startPoint =new Point(p1.x-radius,p1.y-radius);
+                    allShape.getCircleList().get(i).center=p1;
+                    allShape.getCircleList().get(i).radius=radius;
                     int diameter = radius*2;
                     BasicStroke bs=new BasicStroke(allShape.getCircleList().get(i).width
                             ,BasicStroke.JOIN_ROUND
@@ -112,6 +113,9 @@ public class MyPaint extends JFrame {
                     c2p1=allShape.getCircle2List().get(i).point1;
                     c2p2=allShape.getCircle2List().get(i).point2;
                     c2p3=allShape.getCircle2List().get(i).point3;
+
+                    int x[]={c2p1.x,c2p2.x,c2p3.x};
+                    int y[]={c2p1.y,c2p2.y,c2p3.y};
 
                     Point midP1=new Point(),midP2=new Point();
                     midP1.x=(c2p2.x+c2p1.x)/2;
@@ -138,6 +142,8 @@ public class MyPaint extends JFrame {
                         g2d.setStroke(bs);
                         g2d.setColor(allShape.getCircle2List().get(i).color);
 
+
+                      //  g2d.drawPolyline(x,y,3);
                         g2d.drawOval(startPoint.x,startPoint.y,diameter,diameter);
                     }catch (Exception e2){
                         System.out.println("/0!");
@@ -230,6 +236,34 @@ public class MyPaint extends JFrame {
                 g2d.setColor(Color.BLUE);
                 g2d.drawRect(p1.x-5,p1.y-5,10,10);
                 g2d.drawRect(p2.x-5,p2.y-5,10,10);
+            }
+
+            if(currentSelectCircleTemp!=null){
+                Point center=currentSelectCircleTemp.center;
+                int radius=currentSelectCircleTemp.radius;
+                Point p1=new Point(center.x,center.y-radius);
+                Point p2=new Point(center.x+radius,center.y);
+                Point p3=new Point(center.x,center.y+radius);
+                Point p4=new Point(center.x-radius,center.y);
+                g2d.setColor(Color.RED);
+                g2d.drawRect(p1.x-5,p1.y-5,10,10);
+                g2d.drawRect(p2.x-5,p2.y-5,10,10);
+                g2d.drawRect(p3.x-5,p3.y-5,10,10);
+                g2d.drawRect(p4.x-5,p4.y-5,10,10);
+            }
+
+            if (currentSelectCircle!=null){
+                Point center=currentSelectCircle.center;
+                int radius=currentSelectCircle.radius;
+                Point p1=new Point(center.x,center.y-radius);
+                Point p2=new Point(center.x+radius,center.y);
+                Point p3=new Point(center.x,center.y+radius);
+                Point p4=new Point(center.x-radius,center.y);
+                g2d.setColor(Color.BLUE);
+                g2d.drawRect(p1.x-5,p1.y-5,10,10);
+                g2d.drawRect(p2.x-5,p2.y-5,10,10);
+                g2d.drawRect(p3.x-5,p3.y-5,10,10);
+                g2d.drawRect(p4.x-5,p4.y-5,10,10);
             }
 
 
@@ -329,9 +363,16 @@ public class MyPaint extends JFrame {
 
             //for select mode
             if (drawType==1000){
+
                 if (currentSelectLineTemp!=null){
                     currentSelectLine=currentSelectLineTemp;
                     currentSelectLineTemp=null;
+                    drawPanel.repaint();
+                    deleteBtn.setEnabled(true);
+                }
+                if (currentSelectCircleTemp!=null){
+                    currentSelectCircle=currentSelectCircleTemp;
+                    currentSelectCircleTemp=null;
                     drawPanel.repaint();
                     deleteBtn.setEnabled(true);
                 }
@@ -352,7 +393,6 @@ public class MyPaint extends JFrame {
         public void mouseMoved(MouseEvent e){
             super.mouseMoved(e);
             if(isPrePosSet){
-                System.out.println(isPrePosSet);
                 if (drawType==0){
                     line.point2=e.getPoint();
                     allShape.getLineList().add(line);
@@ -373,6 +413,7 @@ public class MyPaint extends JFrame {
                 if(ctrlForCircle2==2){
                     circle2.point3=e.getPoint();
                     allShape.getCircle2List().add(circle2);
+
                 }
                 drawPanel.repaint();
             }
@@ -384,12 +425,29 @@ public class MyPaint extends JFrame {
                     int m_p1=getDistance(e.getPoint(),l.point1);
                     int m_p2=getDistance(e.getPoint(),l.point2);
                     if ((m_p1+m_p2)<(p1_p2+2)){
+                        drawPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
                         currentSelectLineTemp=l;
                         System.out.println(new Date().getTime());
                         break;
                     }
                     else{
+                        drawPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
                         currentSelectLineTemp=null;
+                    }
+                }
+
+                for (int i=0;i<allShape.getCircleList().size();i++){
+                    Circle c=allShape.getCircleList().get(i);
+                    int r=c.radius;
+                    Point center=c.center;
+                    int m_center=getDistance(center,e.getPoint());
+                    if (Math.abs(r-m_center)<5){
+                        drawPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+                        currentSelectCircleTemp=c;
+                        break;
+                    }else{
+                        drawPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                        currentSelectCircleTemp=null;
                     }
                 }
                 drawPanel.repaint();
@@ -460,6 +518,7 @@ public class MyPaint extends JFrame {
        rbLine.addItemListener(new ItemListener() {
            @Override
            public void itemStateChanged(ItemEvent e) {
+               //isPrePosSet=(isPrePosSet)? false : true;
                drawType=0;
                Cursor cursor=new Cursor(Cursor.CROSSHAIR_CURSOR);
                drawPanel.setCursor(cursor);
@@ -505,7 +564,7 @@ public class MyPaint extends JFrame {
            @Override
            public void itemStateChanged(ItemEvent e) {
                drawType=1000;//表示选择状态
-               Cursor cursor=new Cursor(Cursor.HAND_CURSOR);
+               Cursor cursor=new Cursor(Cursor.DEFAULT_CURSOR);
                drawPanel.setCursor(cursor);
            }
        });
@@ -569,10 +628,24 @@ public class MyPaint extends JFrame {
            @Override
            public void actionPerformed(ActionEvent e) {
                if(currentSelectLine!=null){
-                    allShape.getLineList().removeIf(val->val==currentSelectLine);
-                   int index= allShape.getLineList().indexOf(currentSelectLine);
-                   System.out.println(index);
+                    //allShape.getLineList().removeIf(val->val==currentSelectLine);
+                    Iterator iterator=allShape.getLineList().iterator();
+                    int count=0;
+                    while (iterator.hasNext()){
+                        Line x=(Line)iterator.next();
+                        if (x==currentSelectLine){
+                            iterator.remove();
+                            count++;
+                        }
+                    }
+                   System.out.println(count);
                    currentSelectLine=null;
+                   drawPanel.repaint();
+               }
+
+               if(currentSelectCircle!=null){
+                   allShape.getCircleList().removeIf(val->val==currentSelectCircle);
+                   currentSelectCircle=null;
                    drawPanel.repaint();
                }
                deleteBtn.setEnabled(false);
@@ -587,6 +660,7 @@ public class MyPaint extends JFrame {
         int d=(int)(Math.sqrt((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2))+0.5);
         return d;
     }
+
 
     public MyPaint(String title,Dimension frameDim) throws HeadlessException {
 
@@ -621,8 +695,6 @@ public class MyPaint extends JFrame {
         rbSelect=new JRadioButton("选择");
         allShape=new AllShape();
 
-
-    
 
         //按钮分组
         btnGroup.add(rbLine);
