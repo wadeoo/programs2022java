@@ -579,7 +579,13 @@ public class MyPaint extends JFrame {
            @Override
            public void itemStateChanged(ItemEvent e) {
                drawType=5;
-               drawPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+
+               Toolkit toolkit=Toolkit.getDefaultToolkit();
+               Image image=toolkit.getImage("./././img/pencil-cursor.png");
+               Cursor cursor=toolkit.createCustomCursor(image
+                       ,new Point(0,31),"pen cursor");
+               System.out.println(drawPanel.getY()+","+drawPanel.getX());
+               drawPanel.setCursor(cursor);
            }
        });
 
