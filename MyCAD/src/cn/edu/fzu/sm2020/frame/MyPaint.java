@@ -13,7 +13,7 @@ public class MyPaint extends JFrame {
 
     private final JPanel ctrlPanel1;
     public final DrawPanel drawPanel;
-    private final JRadioButton rbLine,rbCircle,rbRect,rbStar,rbCircle2;
+    private final JRadioButton rbLine,rbCircle,rbRect,rbStar,rbCircle2,rbArbitrary;
     private final ButtonGroup btnGroup;
     private JButton colorButton;
     private JButton setWidthButton;
@@ -76,6 +76,14 @@ public class MyPaint extends JFrame {
            super.paintComponent(g);
            Graphics2D g2d=(Graphics2D)g;
 
+           if (allShape.getPointList().size()>1){
+               for (int i=0;i<allShape.getPointList().size()-1;i++){
+                   Point p1=allShape.getPointList().get(i);
+                   Point p2=allShape.getPointList().get(i+1);
+                   g2d.drawLine(p1.x,p1.y,p2.x,p2.y);
+               }
+           }
+
            //draw lines
            if(allShape.getLineList().size()>0){
                 for(int i=0;i<allShape.getLineList().size();i++){
@@ -87,6 +95,7 @@ public class MyPaint extends JFrame {
                             ,BasicStroke.JOIN_ROUND);
                     g2d.setStroke(bs);
                     g2d.drawLine(prePos.x,prePos.y,curPos.x,curPos.y);
+
                 }
            }
 
@@ -401,6 +410,25 @@ public class MyPaint extends JFrame {
 
 
     class  MyMouseMotionAdapter extends MouseMotionAdapter{
+
+
+
+
+
+
+        @Override
+        public  void mouseDragged(MouseEvent e){
+            super.mouseDragged(e);
+            if (drawType==5){
+                allShape.getPointList().add(new Point(e.getX(),e.getY()));
+                drawPanel.repaint();
+            }
+        }
+
+
+
+
+
         @Override
         public void mouseMoved(MouseEvent e){
             super.mouseMoved(e);
@@ -440,7 +468,6 @@ public class MyPaint extends JFrame {
                     if ((m_p1+m_p2)<(p1_p2+2)){
                         drawPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
                         currentSelectLineTemp=l;
-                        System.out.println(new Date().getTime());
                         break;
                     }
                     else{
@@ -526,6 +553,14 @@ public class MyPaint extends JFrame {
             }
         });
 
+        rbArbitrary.addItemListener(new ItemListener() {
+           @Override
+           public void itemStateChanged(ItemEvent e) {
+               drawType=5;
+               drawPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+           }
+       });
+
 
 
        rbLine.addItemListener(new ItemListener() {
@@ -567,7 +602,8 @@ public class MyPaint extends JFrame {
 
        rbCircle2.addItemListener(new ItemListener() {
            @Override
-           public void itemStateChanged(ItemEvent e) { drawType=4;
+           public void itemStateChanged(ItemEvent e) {
+               drawType=4;
                Cursor cursor=new Cursor(Cursor.CROSSHAIR_CURSOR);
                drawPanel.setCursor(cursor);
            }
@@ -714,6 +750,7 @@ public class MyPaint extends JFrame {
         deleteBtn=new JButton("删除");
         rbSelect=new JRadioButton("选择");
         editBtn=new JButton("编辑");
+        rbArbitrary=new JRadioButton("画笔");
         allShape=new AllShape();
 
 
@@ -724,6 +761,7 @@ public class MyPaint extends JFrame {
         btnGroup.add(rbStar);
         btnGroup.add(rbCircle2);
         btnGroup.add(rbSelect);
+        btnGroup.add(rbArbitrary);
 
         //默认直线模式
         rbLine.setSelected(true);
@@ -733,6 +771,7 @@ public class MyPaint extends JFrame {
 
         ctrlPanel1.add(saveBtn);
         ctrlPanel1.add(openBtn);
+        ctrlPanel1.add(rbArbitrary);
         ctrlPanel1.add(rbLine);
         ctrlPanel1.add(rbCircle);
         ctrlPanel1.add(rbRect);

@@ -1,5 +1,7 @@
 package cn.edu.fzu.sm2020.shape;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +14,7 @@ public class AllShape implements Serializable {
     private List<Circle> circleList= new ArrayList<>();
     private List<Rect> rectList= new ArrayList<>();
     private List<Star>  starList=new ArrayList<>();
+    private List<Point> pointList=new ArrayList<>();
 
 
     public List<Line> getLineList() {
@@ -32,5 +35,9 @@ public class AllShape implements Serializable {
 
     public List<Star> getStarList() {
         return starList;
+    }
+
+    public List<Point> getPointList() {
+        return pointList;
     }
 }
