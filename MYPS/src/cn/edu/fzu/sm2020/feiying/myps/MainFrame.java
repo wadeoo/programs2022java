@@ -15,7 +15,6 @@ public class MainFrame extends JFrame implements WindowStateListener {
     private ImageIcon ii;
     private JLabel originImgLabel, modImgLabel;
     private JSplitPane splitPane;
-    private BufferedImage bufferInImg;
 
 
     @Override
@@ -57,14 +56,14 @@ public class MainFrame extends JFrame implements WindowStateListener {
             int width=ii.getIconWidth();
             int height=ii.getIconHeight();
 
-            bufferInImg=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+            BufferedImage bufferInImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             Graphics graphics=bufferInImg.getGraphics();
-            graphics.drawImage(ii.getImage(),width,height,null);
+            graphics.drawImage(ii.getImage(),0,0,null);
 
             BufferedImage bufferOutImg=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
-            float []kernelMatrix={0.0f,-1.f,.0f,
-                                -1.f,4.f,-1.f,
-                                .0f,-1.f,0.f};
+            float []kernelMatrix={0.0f,-1.0f,0.0f,
+                               -1.f,4.0f,-1.0f,
+                                0.0f,-1.0f,0.0f};
 
             Kernel kernel=new Kernel(3,3,kernelMatrix);
             ConvolveOp cop=new ConvolveOp(kernel,ConvolveOp.EDGE_ZERO_FILL,null);
