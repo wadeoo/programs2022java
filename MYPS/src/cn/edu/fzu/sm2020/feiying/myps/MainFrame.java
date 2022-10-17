@@ -4,6 +4,9 @@ import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.awt.image.ConvolveOp;
+import java.awt.image.Kernel;
 import java.io.File;
 
 public class MainFrame extends JFrame implements WindowStateListener {
@@ -12,7 +15,7 @@ public class MainFrame extends JFrame implements WindowStateListener {
     private ImageIcon ii;
     private JLabel originImgLabel, modImgLabel;
     private JSplitPane splitPane;
-
+    private BufferedImage bufferInImg;
 
 
     @Override
@@ -49,7 +52,28 @@ public class MainFrame extends JFrame implements WindowStateListener {
         public void actionPerformed(ActionEvent e) {
             if(ii==null||ii.equals("")){
                 JOptionPane.showMessageDialog(MainFrame.this,"请先打开图像");
+                return;
             }
+            int width=ii.getIconWidth();
+            int height=ii.getIconHeight();
+
+            bufferInImg=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+            Graphics graphics=bufferInImg.getGraphics();
+            graphics.drawImage(ii.getImage(),width,height,null);
+
+            BufferedImage bufferOutImg=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+            float []kernelMatrix={0.0f,-1.f,.0f,
+                                -1.f,4.f,-1.f,
+                                .0f,-1.f,0.f};
+
+            Kernel kernel=new Kernel(3,3,kernelMatrix);
+            ConvolveOp cop=new ConvolveOp(kernel,ConvolveOp.EDGE_ZERO_FILL,null);
+            cop.filter(bufferInImg,bufferOutImg);
+
+            ImageIcon imageIcon=new ImageIcon(bufferOutImg);
+            modImgLabel.setIcon(imageIcon);
+
+
         }
     }
 
