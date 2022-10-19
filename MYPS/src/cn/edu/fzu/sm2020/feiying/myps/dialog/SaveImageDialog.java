@@ -1,10 +1,14 @@
 package cn.edu.fzu.sm2020.feiying.myps.dialog;
 
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class SaveImageDialog extends JDialog {
     private Image outImage;
@@ -50,6 +54,7 @@ public class SaveImageDialog extends JDialog {
         public void paint(Graphics g) {
             super.paint(g);
             g.drawImage(outImage,(this.getWidth()-outImage.getWidth(this))/2,0,this);//在面板上绘制图像
+
         }
     }
 
@@ -57,7 +62,29 @@ public class SaveImageDialog extends JDialog {
     private class ActionListenerForSave implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            JFileChooser fileChooser=new JFileChooser("D:/basic/desktop");
+            fileChooser.setFileFilter(new FileNameExtensionFilter("*.jpg","jpg"));
+            fileChooser.showSaveDialog(SaveImageDialog.this);
 
+            File file=fileChooser.getSelectedFile();
+            if(!file.getPath().endsWith(".jpg")){
+               file=new File(file.getPath()+".jpg") ;
+            }
+            if(file.exists()){
+                JOptionPane.showMessageDialog(SaveImageDialog.this,"文件已存在,请使用其他文件名");
+                return;
+            }
+            try{
+                file.createNewFile();
+
+                BufferedImage outImgBuffered=new BufferedImage(outImage.getWidth(null),outImage.getHeight(null)
+                ,BufferedImage.TYPE_INT_RGB);
+                outImgBuffered.getGraphics().drawImage(outImage,0,0,null);
+
+                ImageIO.write(outImgBuffered,"jpg",file);
+            }catch (Exception e1){
+
+            }
         }
     }
 }

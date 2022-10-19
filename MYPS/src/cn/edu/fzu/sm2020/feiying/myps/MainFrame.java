@@ -11,7 +11,7 @@ import java.awt.image.ConvolveOp;
 import java.awt.image.Kernel;
 import java.io.File;
 
-public class MainFrame extends JFrame implements WindowStateListener {
+public class MainFrame extends JFrame implements KeyListener ,WindowStateListener  {
 
 
     private ImageIcon ii;
@@ -22,6 +22,23 @@ public class MainFrame extends JFrame implements WindowStateListener {
 
     @Override
     public void windowStateChanged(WindowEvent e) {
+
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode()==KeyEvent.VK_Q){
+            System.out.println("sdhfgid");
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
 
     }
 
@@ -106,27 +123,10 @@ public class MainFrame extends JFrame implements WindowStateListener {
         //
         imagePanelInit();
 
-        this.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
+        this.setVisible(true);
 
-            }
+        this.addKeyListener(this);
 
-            @Override
-            public void keyPressed(KeyEvent e) {
-                if (e.getKeyCode()== KeyEvent.VK_Q){
-                    System.exit(0);
-                }
-                if(e.getKeyCode()==KeyEvent.VK_CONTROL && e.getKeyCode()==KeyEvent.VK_S){
-
-                }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        });
     }
 
     private void imagePanelInit() {
