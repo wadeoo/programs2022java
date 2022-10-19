@@ -1,5 +1,7 @@
 package cn.edu.fzu.sm2020.feiying.myps;
 
+import cn.edu.fzu.sm2020.feiying.myps.dialog.SaveImageDialog;
+
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import java.awt.*;
@@ -15,6 +17,7 @@ public class MainFrame extends JFrame implements WindowStateListener {
     private ImageIcon ii;
     private JLabel originImgLabel, modImgLabel;
     private JSplitPane splitPane;
+    private Image outImg;
 
 
     @Override
@@ -68,9 +71,11 @@ public class MainFrame extends JFrame implements WindowStateListener {
             Kernel kernel=new Kernel(3,3,kernelMatrix);
             ConvolveOp cop=new ConvolveOp(kernel,ConvolveOp.EDGE_ZERO_FILL,null);
             cop.filter(bufferInImg,bufferOutImg);
+            outImg=bufferOutImg;
 
-            ImageIcon imageIcon=new ImageIcon(bufferOutImg);
+            ImageIcon imageIcon=new ImageIcon(outImg);
             modImgLabel.setIcon(imageIcon);
+
 
 
         }
@@ -184,8 +189,11 @@ public class MainFrame extends JFrame implements WindowStateListener {
 
         JMenuItem iOpenItem=new JMenuItem("打开图像");
         JMenuItem edgeDetectItem=new JMenuItem("边缘检测");
+        JMenuItem saveItem=new JMenuItem("保存图像");
+
 
         fileMenu.add(iOpenItem);
+        fileMenu.add(saveItem);
         imgProcessMenu.add(edgeDetectItem);
 
         menuBar.add(fileMenu);
@@ -193,9 +201,22 @@ public class MainFrame extends JFrame implements WindowStateListener {
 
         iOpenItem.addActionListener(new HandleOpen());
         edgeDetectItem.addActionListener(new HandleEdgeDetect());
+        saveItem.addActionListener(new SaveHandler());
 
         this.setJMenuBar(menuBar);
     }
 
 
+    private class SaveHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(outImg==null||outImg.equals("")){
+                JOptionPane.showMessageDialog(MainFrame.this,"当前无处理结果");
+                return;
+            }
+            SaveImageDialog saveImageDialog=new SaveImageDialog(outImg);
+            saveImageDialog.setVisible(true);
+        }
+    }
 }
