@@ -117,6 +117,9 @@ public class MainFrame extends JFrame implements WindowStateListener {
                 if (e.getKeyCode()== KeyEvent.VK_Q){
                     System.exit(0);
                 }
+                if(e.getKeyCode()==KeyEvent.VK_CONTROL && e.getKeyCode()==KeyEvent.VK_S){
+
+                }
             }
 
             @Override
