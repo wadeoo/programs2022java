@@ -180,7 +180,6 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
         toolBar.add(edgeDetectBtn);
 
         this.add(toolBar,BorderLayout.NORTH);
-
     }
 
 
