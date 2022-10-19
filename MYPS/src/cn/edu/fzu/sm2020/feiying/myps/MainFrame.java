@@ -1,5 +1,6 @@
 package cn.edu.fzu.sm2020.feiying.myps;
 
+import cn.edu.fzu.sm2020.feiying.myps.dialog.CutImageDialog;
 import cn.edu.fzu.sm2020.feiying.myps.dialog.SaveImageDialog;
 
 import javax.swing.*;
@@ -92,7 +93,6 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
 
             ImageIcon imageIcon=new ImageIcon(outImg);
             modImgLabel.setIcon(imageIcon);
-
 
 
         }
@@ -194,11 +194,13 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
         JMenuItem edgeDetectItem=new JMenuItem("边缘检测");
         JMenuItem saveItem=new JMenuItem("保存图像");
         JMenuItem bleachItem=new JMenuItem("去色");
+        JMenuItem cutItem=new JMenuItem("裁剪");
 
         fileMenu.add(iOpenItem);
         fileMenu.add(saveItem);
         imgProcessMenu.add(edgeDetectItem);
         imgProcessMenu.add(bleachItem);
+        imgProcessMenu.add(cutItem);
 
         menuBar.add(fileMenu);
         menuBar.add(imgProcessMenu);
@@ -207,6 +209,8 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
         saveItem.addActionListener(new SaveHandler());
         edgeDetectItem.addActionListener(new EdgeDetectHandler());
         bleachItem.addActionListener(new BleachHandler());
+        cutItem.addActionListener(new CutHandler());
+
 
         this.setJMenuBar(menuBar);
     }
@@ -238,16 +242,34 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
             BufferedImage bufferInImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             bufferInImg.getGraphics().drawImage(openedImg.getImage(),0,0,null);
 
-            BufferedImage bufferOutImg=new BufferedImage(width,height,BufferedImage.TYPE_BYTE_GRAY);
+//            BufferedImage bufferOutImg=new BufferedImage(width,height,BufferedImage.TYPE_BYTE_GRAY);
+//            for (int y=0;y<height;y++){
+//                for (int x=0;x<width;x++){
+//                    bufferOutImg.setRGB(x,y,bufferInImg.getRGB(x,y));
+//                }
+//            }
+
+            BufferedImage bufferOutImg=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
             for (int y=0;y<height;y++){
                 for (int x=0;x<width;x++){
-                    bufferOutImg.setRGB(x,y,bufferInImg.getRGB(x,y));
+                    bufferOutImg.setRGB(x,y,Color.RED.getRGB()+x);
                 }
             }
-
             outImg=bufferOutImg;
             ImageIcon imageIcon=new ImageIcon(outImg);
             modImgLabel.setIcon(imageIcon);
+        }
+    }
+
+    private class CutHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(openedImg==null||openedImg.equals("")){
+                JOptionPane.showMessageDialog(MainFrame.this,"请先打开图像");
+                return;
+            }
+            CutImageDialog cutImageDialog=new CutImageDialog(openedImg.getImage());
+            cutImageDialog.setVisible(true);
         }
     }
 }
