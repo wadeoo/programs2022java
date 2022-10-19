@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e5c95ce-5050-4c5e-8544-34fbf72df4a1" name="默认" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYPS/cn/edu/fzu/sm2020/feiying/myps/MainFrame$HandleEdgeDetect.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MYPS/cn/edu/fzu/sm2020/feiying/myps/MainFrame$HandleOpen.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/MainFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/MainFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/dialog/SaveImageDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/dialog/SaveImageDialog.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,47 +51,26 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="7490" />
+          <entry key="java" value="8029" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7490" />
+          <entry key="JAVA" value="8029" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/MainFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1138">
-              <caret line="215" column="20" selection-start-line="215" selection-start-column="20" selection-end-line="215" selection-end-column="20" />
+            <state relative-caret-position="364">
+              <caret line="243" column="69" lean-forward="true" selection-start-line="243" selection-start-column="69" selection-end-line="243" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/dialog/SaveImageDialog.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/../../java-1.8.0-openjdk-1.8.0.265/java-1.8.0-openjdk-1.8.0.265-1.b01.ojdkbuild.windows.x86_64/src.zip!/javax/imageio/ImageIO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="1526" column="26" selection-start-line="1526" selection-start-column="26" selection-end-line="1526" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -106,7 +87,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>outImage</find>
+      <find>ii</find>
     </findStrings>
+    <replaceStrings>
+      <replace>openedImg</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -115,8 +100,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/Main.java" />
-        <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/MainFrame.java" />
         <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/dialog/SaveImageDialog.java" />
+        <option value="$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/MainFrame.java" />
       </list>
     </option>
   </component>
@@ -171,14 +156,6 @@
               <item name="myps" type="462c0819:PsiDirectoryNode" />
               <item name="MainFrame" type="1a9f42e2:ClassTreeNode" />
             </path>
-            <path>
-              <item name="MYPS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="MYPS" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="myps" type="462c0819:PsiDirectoryNode" />
-              <item name="MainFrame" type="1a9f42e2:ClassTreeNode" />
-              <item name="SaveHandler" type="1a9f42e2:ClassTreeNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -188,7 +165,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1666147178217" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1666148377997" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -245,18 +222,18 @@
       <workItem from="1665966739126" duration="2241000" />
       <workItem from="1665969261700" duration="3116000" />
       <workItem from="1665973272725" duration="8248000" />
-      <workItem from="1666140834475" duration="6282000" />
+      <workItem from="1666140834475" duration="7473000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19887000" />
+    <option name="totallyTimeSpent" value="21078000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="402" y="0" width="1269" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25641027" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25641027" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="设计器" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -265,7 +242,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25438598" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25438598" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -355,6 +332,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/dialog/SaveImageDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/../../java-1.8.0-openjdk-1.8.0.265/java-1.8.0-openjdk-1.8.0.265-1.b01.ojdkbuild.windows.x86_64/src.zip!/javax/imageio/ImageIO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
@@ -364,18 +351,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/MainFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1138">
-          <caret line="215" column="20" selection-start-line="215" selection-start-column="20" selection-end-line="215" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cn/edu/fzu/sm2020/feiying/myps/dialog/SaveImageDialog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="59" column="12" selection-start-line="59" selection-start-column="12" selection-end-line="59" selection-end-column="12" />
+        <state relative-caret-position="364">
+          <caret line="243" column="69" lean-forward="true" selection-start-line="243" selection-start-column="69" selection-end-line="243" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
