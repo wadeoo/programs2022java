@@ -14,7 +14,7 @@ import java.io.File;
 public class MainFrame extends JFrame implements KeyListener ,WindowStateListener  {
 
 
-    private ImageIcon ii;
+    private ImageIcon openedImg;
     private JLabel originImgLabel, modImgLabel;
     private JSplitPane splitPane;
     private Image outImg;
@@ -43,7 +43,7 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
     }
 
     //inner class
-    class  HandleOpen implements ActionListener{
+    class  OpenHandler implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -53,9 +53,9 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
 
             File file =fileChooser.getSelectedFile();
             if(file.exists()){
-                ii =new ImageIcon(file.getPath());
+                openedImg =new ImageIcon(file.getPath());
 
-                originImgLabel.setIcon(ii);
+                originImgLabel.setIcon(openedImg);
             }else {
                 JOptionPane.showMessageDialog(fileChooser,"文件不存在");
             }
@@ -65,20 +65,20 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
     }
 
     //inner class
-    public class HandleEdgeDetect implements ActionListener{
+    public class EdgeDetectHandler implements ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(ii==null||ii.equals("")){
+            if(openedImg==null||openedImg.equals("")){
                 JOptionPane.showMessageDialog(MainFrame.this,"请先打开图像");
                 return;
             }
-            int width=ii.getIconWidth();
-            int height=ii.getIconHeight();
+            int width=openedImg.getIconWidth();
+            int height=openedImg.getIconHeight();
 
             BufferedImage bufferInImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
             Graphics graphics=bufferInImg.getGraphics();
-            graphics.drawImage(ii.getImage(),0,0,null);
+            graphics.drawImage(openedImg.getImage(),0,0,null);
 
             BufferedImage bufferOutImg=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
             float []kernelMatrix={0.0f,-1.0f,0.0f,
@@ -172,9 +172,9 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
         imageIcon2 =new ImageIcon(imageIcon2.getImage().getScaledInstance(20,20, Image.SCALE_SMOOTH));
 
         openBtn.setIcon(imageIcon1);
-        openBtn.addActionListener(new HandleOpen());
+        openBtn.addActionListener(new OpenHandler());
         edgeDetectBtn.setIcon(imageIcon2);
-        edgeDetectBtn.addActionListener(new HandleEdgeDetect());
+        edgeDetectBtn.addActionListener(new EdgeDetectHandler());
 
         toolBar.add(openBtn);
         toolBar.add(edgeDetectBtn);
@@ -193,18 +193,20 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
         JMenuItem iOpenItem=new JMenuItem("打开图像");
         JMenuItem edgeDetectItem=new JMenuItem("边缘检测");
         JMenuItem saveItem=new JMenuItem("保存图像");
-
+        JMenuItem bleachItem=new JMenuItem("去色");
 
         fileMenu.add(iOpenItem);
         fileMenu.add(saveItem);
         imgProcessMenu.add(edgeDetectItem);
+        imgProcessMenu.add(bleachItem);
 
         menuBar.add(fileMenu);
         menuBar.add(imgProcessMenu);
 
-        iOpenItem.addActionListener(new HandleOpen());
-        edgeDetectItem.addActionListener(new HandleEdgeDetect());
+        iOpenItem.addActionListener(new OpenHandler());
         saveItem.addActionListener(new SaveHandler());
+        edgeDetectItem.addActionListener(new EdgeDetectHandler());
+        bleachItem.addActionListener(new BleachHandler());
 
         this.setJMenuBar(menuBar);
     }
@@ -220,6 +222,32 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
             }
             SaveImageDialog saveImageDialog=new SaveImageDialog(outImg);
             saveImageDialog.setVisible(true);
+        }
+    }
+
+    private class BleachHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(openedImg==null||openedImg.equals("")){
+                JOptionPane.showMessageDialog(MainFrame.this,"请先打开图像");
+                return;
+            }
+            int width=openedImg.getIconWidth();
+            int height=openedImg.getIconHeight();
+
+            BufferedImage bufferInImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+            bufferInImg.getGraphics().drawImage(openedImg.getImage(),0,0,null);
+
+            BufferedImage bufferOutImg=new BufferedImage(width,height,BufferedImage.TYPE_BYTE_GRAY);
+            for (int y=0;y<height;y++){
+                for (int x=0;x<width;x++){
+                    bufferOutImg.setRGB(x,y,bufferInImg.getRGB(x,y));
+                }
+            }
+
+            outImg=bufferOutImg;
+            ImageIcon imageIcon=new ImageIcon(outImg);
+            modImgLabel.setIcon(imageIcon);
         }
     }
 }
