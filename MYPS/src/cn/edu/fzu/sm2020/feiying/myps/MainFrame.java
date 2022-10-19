@@ -211,7 +211,6 @@ public class MainFrame extends JFrame implements KeyListener ,WindowStateListene
         bleachItem.addActionListener(new BleachHandler());
         cutItem.addActionListener(new CutHandler());
 
-
         this.setJMenuBar(menuBar);
     }
 
