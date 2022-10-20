@@ -1,5 +1,7 @@
 package cn.edu.fzu.sm.weida.wzq;
 
+import sun.text.normalizer.Utility;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -8,8 +10,9 @@ public class MainFrame extends JFrame {//同时作为程序入口类
 
     public static void main(String[] args) {
         MainFrame mainFrame=new MainFrame();
-        mainFrame.setResizable(false);
+        //mainFrame.setResizable(false);
         mainFrame.setTitle("五子棋");
+        mainFrame.setType(Type.UTILITY);
         mainFrame.setSize(800,700);
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
