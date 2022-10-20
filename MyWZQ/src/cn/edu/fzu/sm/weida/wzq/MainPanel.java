@@ -2,11 +2,15 @@ package cn.edu.fzu.sm.weida.wzq;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class MainPanel extends JPanel {
+public class MainPanel extends JPanel implements MouseListener {
     private static final int COLUMN=16,ROW=16,GAP=40;
 
     private char[][] allChess=new char[ROW][COLUMN];//*--没有棋子, !--黑色棋子, ~--白色棋子
+
+    private boolean isBlack=true;
 
     public MainPanel() {
         for(int i=0;i<ROW;i++){
@@ -17,6 +21,8 @@ public class MainPanel extends JPanel {
 
         allChess[2][6]='!';
         allChess[11][9]='~';
+
+        this.addMouseListener(this);
     }
 
     @Override
@@ -42,5 +48,48 @@ public class MainPanel extends JPanel {
                }
            }
         }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        int press_x=e.getX();
+        int press_y=e.getY();
+        int check_x=(int)Math.round((press_x)/GAP);
+        int check_y=(int)Math.round((press_y)/GAP);
+
+        if(isBlack){
+            if(allChess[check_x][check_y]!='*'){
+               return;
+            }
+            allChess[check_x][check_y]='!';
+            isBlack=false;
+        }else{
+            if(allChess[check_x][check_y]!='*'){
+                return;
+            }
+            allChess[check_x][check_y]='~';
+            isBlack=true;
+        }
+        repaint();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

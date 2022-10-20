@@ -8,6 +8,7 @@ public class MainFrame extends JFrame {//同时作为程序入口类
 
     public static void main(String[] args) {
         MainFrame mainFrame=new MainFrame();
+        mainFrame.setResizable(false);
         mainFrame.setTitle("五子棋");
         mainFrame.setSize(800,700);
         mainFrame.setLocationRelativeTo(null);
