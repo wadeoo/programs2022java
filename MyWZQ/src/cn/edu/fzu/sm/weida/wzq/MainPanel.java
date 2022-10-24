@@ -48,6 +48,7 @@ public class MainPanel extends JPanel implements MouseListener {
                if(allChess[i][j]=='!'){
                    g.setColor(Color.BLACK);
                    g.fillOval(i*40+5,j*40+5,30,30);
+                   //g.drawImage(new ImageIcon("././img/chessboard.jpg").getImage(),i*40+5,j*40+5,null);
                }
                if(allChess[i][j]=='~'){
                    g.setColor(Color.WHITE);
