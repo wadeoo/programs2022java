@@ -33,8 +33,9 @@ public class MainPanel extends JPanel implements MouseListener {
 
     @Override
     public void paint(Graphics g) {
-        g.setColor(Color.BLACK);
         super.paint(g);
+        g.setColor(Color.BLACK);
+        g.drawImage(new ImageIcon("././img/chessboard.jpg").getImage(),0,0,null);
         for(int i=0;i<ROW;i++){
            g.drawLine(20,20+i*GAP,620,20+i*GAP);
         }

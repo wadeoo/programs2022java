@@ -23,7 +23,7 @@ public class MainFrame extends JFrame {//同时作为程序入口类
         MainPanel mainPanel=new MainPanel();//左边游戏面板
         CtrlPanel ctrlPanel=new CtrlPanel(mainPanel);//操作面板
 
-        mainPanel.setBackground(new Color(135, 86, 0));
+        //mainPanel.setBackground(new Color(135, 86, 0));
 
         mainFrame.add(mainPanel, BorderLayout.CENTER);
         mainFrame.add(ctrlPanel,BorderLayout.EAST);
