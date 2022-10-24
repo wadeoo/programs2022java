@@ -32,7 +32,7 @@ public class CutImageDialog extends JDialog {
 
         imagePanel.addMouseListener(new MyMouseAdaptor());
         imagePanel.addMouseMotionListener(new MyMouseMotionAdaptor());
-        cutImagePanel.setLayout(new BoxLayout(cutImagePanel,BoxLayout.X_AXIS));
+        cutImagePanel.setLayout(new BoxLayout(cutImagePanel,BoxLayout.Y_AXIS));
         cutImagePanel.add(saveBtn,BorderLayout.SOUTH);
 
         splitPane=new JSplitPane();
