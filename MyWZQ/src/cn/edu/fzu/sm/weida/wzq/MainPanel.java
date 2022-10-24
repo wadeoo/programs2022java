@@ -144,9 +144,56 @@ public class MainPanel extends JPanel implements MouseListener {
         while (allChess[x][lastY]==lastPiece){
             lastY--;
         }
+        int verticalNum=0;
+        lastY++;
 
-        //int vertical
+        while(lastY<16&&allChess[x][lastY]==lastPiece){
+            verticalNum++;
+            lastY++;
+        }
 
+        if(verticalNum>=5){
+            return true;
+        }
+
+        //对角线
+        lastX=x;
+        lastY=y;
+        while(allChess[lastX][lastY]==lastPiece){
+            lastX--;
+            lastY--;
+        }
+        lastX++;
+        lastY++;
+
+        int diagonalNum1=0;
+        while(lastX<16&&lastY<16&&allChess[lastX][lastY]==lastPiece){
+            diagonalNum1++;
+            lastX++;
+            lastY++;
+        }
+        if(diagonalNum1>=5){
+            return true;
+        }
+
+        lastX=x;
+        lastY=y;
+        while(lastX<16&&allChess[lastX][lastY]==lastPiece){
+            lastX++;
+            lastY--;
+        }
+        lastX--;
+        lastY++;
+
+        int diagonalNum2=0;
+        while (lastY<16&&allChess[lastX][lastY]==lastPiece){
+            diagonalNum2++;
+            lastX--;
+            lastY++;
+        }
+        if(diagonalNum2>=5){
+            return true;
+        }
 
 
         return false;
