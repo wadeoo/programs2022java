@@ -47,12 +47,13 @@ public class MainPanel extends JPanel implements MouseListener {
            for (int j=0;j<16;j++) {
                if(allChess[i][j]=='!'){
                    g.setColor(Color.BLACK);
-                   g.fillOval(i*40+5,j*40+5,30,30);
-                   //g.drawImage(new ImageIcon("././img/chessboard.jpg").getImage(),i*40+5,j*40+5,null);
+                   //g.fillOval(i*40+5,j*40+5,30,30);
+                   g.drawImage(new ImageIcon("././img/blackp.png").getImage(),i*40+5,j*40+5,null);
                }
                if(allChess[i][j]=='~'){
                    g.setColor(Color.WHITE);
-                   g.fillOval(i*40+5,j*40+5,30,30);
+                   //g.fillOval(i*40+5,j*40+5,30,30);
+                   g.drawImage(new ImageIcon("././img/whitep.png").getImage(),i*40+5,j*40+5,null);
                }
            }
         }
