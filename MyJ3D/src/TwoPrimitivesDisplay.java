@@ -25,7 +25,7 @@ public class TwoPrimitivesDisplay{
         BoundingSphere bounds = new BoundingSphere(new Point3d( 0.0,0.0,0.0),100.0);
 
         //定义背景颜色
-        Color3f bgColor=new Color3f(.0f,.0f,.0f);
+        Color3f bgColor=new Color3f(.5f,.0f,.5f);
         Background bg=new Background(bgColor);
         bg.setApplicationBounds(bounds);
         BranchGroupRoot.addChild(bg);
@@ -66,12 +66,12 @@ public class TwoPrimitivesDisplay{
         //定义两个三维型体的外观
         Appearance app1=new Appearance();
         Material material1=new Material();
-        material1.setDiffuseColor(new Color3f(1.0f,.0f,0.0f));
+        material1.setDiffuseColor(new Color3f(.2f,.0f,0.5f));
         app1.setMaterial(material1);
 
         Appearance app2=new Appearance();
         Material material2=new Material();
-        material2.setDiffuseColor(new Color3f(0.0f,1.0f,0.0f));
+        material2.setDiffuseColor(new Color3f(0.6f,.4f,0.0f));
         app2.setMaterial(material2);
 
         //定义一个球体于一个长方体的大小、外观属性与坐标变换，并定义相应的TransformGroup：ta1、ta2
