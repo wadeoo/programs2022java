@@ -31,6 +31,7 @@ public class CustomerLoginFrame extends JFrame {
 
         JTextField usernameTextField=new JTextField();
         JPasswordField passwordField=new JPasswordField(16);
+        passwordField.setEchoChar('*');
 
         usernameTextField.grabFocus();
 
@@ -61,7 +62,8 @@ public class CustomerLoginFrame extends JFrame {
                     enteredUser.setPassword(passwordText.trim());
                     ManageHelper manageHelper=new ManageHelper();
                     if(manageHelper.login(enteredUser)){
-                        
+                        CustomerMainFrame customerMainFrame=new CustomerMainFrame();
+                        CustomerLoginFrame.this.dispose();
                     }
                 }
             }

@@ -5,7 +5,7 @@ import cn.edu.fzu.sm.wuweida.bean.User;
 import java.sql.SQLException;
 
 public class ManageHelper {
-    private  JdbcHelper jdbcHelper;
+    private  JdbcHelper jdbcHelper=new JdbcHelper();
 
 
     /*登录业务处理*/

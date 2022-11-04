@@ -36,6 +36,11 @@ public class JdbcHelper implements  JdbcConfig{
             preparedStatement=connection.prepareStatement("select * from user where username=?");
             preparedStatement.setString(1,user.getUsername());
             resultSet=preparedStatement.executeQuery();
+            if(resultSet.next()){
+                newUser.setUsername(resultSet.getString(1));
+                newUser.setPassword(resultSet.getString(2));
+                newUser.setIsLogin(resultSet.getInt(3));
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
