@@ -11,8 +11,9 @@ public class ImagePanel extends JPanel{
 	private Image img;
 	
 	public ImagePanel(){   
-		icon=new ImageIcon(StudentSystemMainFrame.class.getResource("/1.png" ));  
-		img=icon.getImage();  
+		//icon=new ImageIcon(StudentSystemMainFrame.class.getResource("/1.png" ));
+		icon=new ImageIcon(ImagePanel.class.getResource("/1.png" ));
+		img=icon.getImage();
 	}   
 	public void paintComponent(Graphics g)  
 	{   

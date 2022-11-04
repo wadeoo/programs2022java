@@ -32,6 +32,11 @@ public class StudentSystemLoginFrame extends JFrame{
 	private JFrame jf;	//当前窗口 。
 	public StudentSystemLoginFrame(){
 		super("学生成绩管理系统登录界面");
+
+		//为登录界面设置背景
+		ImagePanel imagePanel = new ImagePanel();
+		setContentPane(imagePanel);
+
 		this.jf = this;
 		this.setLayout(null);//设置为空布局。
 		this.setSize(400,300);//设置大小。
