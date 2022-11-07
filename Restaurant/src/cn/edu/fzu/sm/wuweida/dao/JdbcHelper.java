@@ -3,6 +3,7 @@ package cn.edu.fzu.sm.wuweida.dao;
 import cn.edu.fzu.sm.wuweida.bean.User;
 
 import java.sql.*;
+import java.util.List;
 
 //与数据库通信的类
 
@@ -92,6 +93,52 @@ public class JdbcHelper implements  JdbcConfig{
             e.printStackTrace();
         }
         return b;
+    }
+
+    //查看用户名是否已被使用
+    public boolean isUsernameUsed(String enteredUsername){
+        boolean b=false;
+        try{
+            preparedStatement=connection.prepareStatement("select * from user where username=?");
+            preparedStatement.setString(1,enteredUsername);
+            resultSet=preparedStatement.executeQuery();
+            if(resultSet.next()){
+                b=true;//用户名存在
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return b;
+    }
+
+
+    //获取图片名字
+    public void setFoodNameList(List<String> foodNameListc,String type){
+        try{
+            preparedStatement=connection.prepareStatement("SELECT foodName from food where type=?");
+            preparedStatement.setString(1,type);
+            resultSet=preparedStatement.executeQuery();
+            while (resultSet.next()){
+                foodNameListc.add(resultSet.getString(1));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+    //获取价格
+    public void setPriceList(int[] priceList,String type){
+        try{
+            preparedStatement=connection.prepareStatement("SELECT  price from food where type=?");
+            preparedStatement.setString(1,type);
+            resultSet=preparedStatement.executeQuery();
+            int i=0;
+            while (resultSet.next()){
+                priceList[i++]=resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 }

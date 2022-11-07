@@ -19,33 +19,40 @@ public class CustomerLoginFrame extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setIconImage(new ImageIcon(CustomerLoginFrame.class.getResource("/restaurant.png")).getImage());
 
-        //this.setType(Type.UTILITY);
-        this.setLayout(new GridLayout(3,2));
-        this.setSize(400,300);
+        this.setType(Type.UTILITY);
+        this.setLayout(new GridLayout(3,1));
+        this.setSize(400,150);
         this.setLocationRelativeTo(null);
 
-        Container contentPane=this.getContentPane();
 
         JLabel usernameLabel=new JLabel("用户名");
         JLabel passwordLabel=new JLabel("密码");
 
-        JTextField usernameTextField=new JTextField();
+        JTextField usernameTextField=new JTextField(16);
         JPasswordField passwordField=new JPasswordField(16);
         passwordField.setEchoChar('*');
 
         usernameTextField.grabFocus();
 
-        this.add(usernameLabel);
-        this.add(usernameTextField);
-        this.add(passwordLabel);
-        this.add(passwordField);
-
-
         JButton okBtn=new JButton("登陆");
         JButton cancelBtn=new JButton("取消");
+        JButton registerBtn=new JButton("注册");
 
-        this.add(okBtn);
-        this.add(cancelBtn);
+        JPanel usernamePanel=new JPanel();
+        usernamePanel.add(usernameLabel);
+        usernamePanel.add(usernameTextField);
+        JPanel passwordPanel=new JPanel();
+        passwordPanel.add(passwordLabel);
+        passwordPanel.add(passwordField);
+        JPanel actionPanel=new JPanel();
+        actionPanel.add(okBtn);
+        actionPanel.add(cancelBtn);
+        actionPanel.add(registerBtn);
+
+
+        this.add(usernamePanel);
+        this.add(passwordPanel);
+        this.add(actionPanel);
 
         okBtn.addActionListener(new ActionListener() {
             @Override
@@ -58,11 +65,11 @@ public class CustomerLoginFrame extends JFrame {
                     JOptionPane.showMessageDialog(CustomerLoginFrame.this,"请输入密码");
                 }else{
                     User enteredUser=new User();
-                    enteredUser.setUsername(usernameText.trim());
-                    enteredUser.setPassword(passwordText.trim());
+                    enteredUser.setUsername(usernameText);
+                    enteredUser.setPassword(passwordText);
                     ManageHelper manageHelper=new ManageHelper();
                     if(manageHelper.login(enteredUser)){
-                        CustomerMainFrame customerMainFrame=new CustomerMainFrame();
+                        CustomerMainFrame customerMainFrame=new CustomerMainFrame(usernameText);
                         CustomerLoginFrame.this.dispose();
                     }
                 }
@@ -73,6 +80,14 @@ public class CustomerLoginFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 CustomerLoginFrame.this.dispose();
+            }
+        });
+
+        registerBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CustomerLoginFrame.this.dispose();
+                CustomerRegisterFrame customerRegisterFrame=new CustomerRegisterFrame();
             }
         });
 
