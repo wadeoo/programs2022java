@@ -1,15 +1,14 @@
 package cn.edu.fzu.sm.wuweida.frame;
 
+import cn.edu.fzu.sm.wuweida.bean.NameNPrice;
 import cn.edu.fzu.sm.wuweida.dao.JdbcHelper;
+import cn.edu.fzu.sm.wuweida.tableModel.ChosenDishTableModel;
 
+import javax.naming.Name;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.ListDataListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +27,10 @@ public class CustomerMainFrame extends JFrame {
     private int[] chosenPriceList=new int[50];
 
 
+    private ArrayList<String> cols;
+    private List<NameNPrice> rows;
+    private ChosenDishTableModel<NameNPrice> chosenDishTableModel;
+
 
     public CustomerMainFrame(String username) throws HeadlessException {
         super("餐厅主页面");
@@ -35,6 +38,8 @@ public class CustomerMainFrame extends JFrame {
         this.setSize(800,600);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout(10,0));
+
+
 
         //头部欢迎词
         JLabel topLabel=new JLabel(username+" 粤湘之家欢迎你!",JLabel.CENTER);
@@ -71,7 +76,16 @@ public class CustomerMainFrame extends JFrame {
         String[] tableNumber={"桌1", "桌2", "桌3", "桌4", "桌5", "桌6"};
         JComboBox tableComboBox=new JComboBox(tableNumber);
         JTextField headTextField=new JTextField(16);
+
+
         JTable chosenDishTabel=new JTable();
+        cols=new ArrayList<>();
+        cols.add("菜式");
+        cols.add("价格");
+        rows=getTheChosens();
+        chosenDishTableModel=new ChosenDishTableModel<NameNPrice>(cols,rows);
+        chosenDishTabel.setModel(chosenDishTableModel);
+
         detailPanel.add(tableChoosingLabel);
         detailPanel.add(tableComboBox);
         detailPanel.add(headLabel);
@@ -121,6 +135,23 @@ public class CustomerMainFrame extends JFrame {
         });
 
 
+    }
+
+    public  List<NameNPrice> getTheChosens(){
+        List<NameNPrice> nameNPriceList=new ArrayList<>();
+        for (int i=0;i<chosenFoodNameList.size();i++){
+            NameNPrice nameNPrice=new NameNPrice();
+            nameNPrice.setFoodName(chosenFoodNameList.get(i));
+            nameNPrice.setPrice(chosenPriceList[i]);
+            nameNPriceList.add(nameNPrice);
+        }
+        return nameNPriceList;
+    }
+
+    public  void updateTable(){
+        rows=getTheChosens();
+        chosenDishTableModel.setRows(rows);
+        chosenDishTableModel.fireTableDataChanged();
     }
 
     public  void dishPanelSetup(){
@@ -230,6 +261,7 @@ public class CustomerMainFrame extends JFrame {
                     }else{
                         chosenFoodNameList.removeIf(val->val==jcb.getText());
                     }
+                    updateTable();
                 }
             }
             jdbcHelper.setChosenPriceList(chosenFoodNameList,chosenPriceList);
