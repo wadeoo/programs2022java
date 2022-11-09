@@ -261,10 +261,10 @@ public class CustomerMainFrame extends JFrame {
                     }else{
                         chosenFoodNameList.removeIf(val->val==jcb.getText());
                     }
-                    updateTable();
                 }
             }
             jdbcHelper.setChosenPriceList(chosenFoodNameList,chosenPriceList);
+            updateTable();
         }
 
 
