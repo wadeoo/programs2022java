@@ -3,10 +3,13 @@ package cn.edu.fzu.sm.wuweida.frame;
 import cn.edu.fzu.sm.wuweida.dao.JdbcHelper;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListDataListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +22,10 @@ public class CustomerMainFrame extends JFrame {
     private final JPanel dessertPanel;
     private JdbcHelper jdbcHelper;
 
-    private ArrayList<String> foodNameListc;
+    private ArrayList<String> foodNameList;
     private int[] priceListc;
+    private ArrayList<String> chosenFoodNameList=new ArrayList<>();
+    private int[] chosenPriceList=new int[50];
 
 
 
@@ -30,7 +35,6 @@ public class CustomerMainFrame extends JFrame {
         this.setSize(800,600);
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout(10,0));
-//        this.pack();
 
         //头部欢迎词
         JLabel topLabel=new JLabel(username+" 粤湘之家欢迎你!",JLabel.CENTER);
@@ -47,10 +51,10 @@ public class CustomerMainFrame extends JFrame {
         cantonesePanel= new JPanel();
         xiangPanel= new JPanel();
         dessertPanel= new JPanel();
-        popularPanel.setLayout(new GridLayout(50,1));
-        cantonesePanel.setLayout(new GridLayout(20,1));
-        xiangPanel.setLayout(new GridLayout(9,1));
-        dessertPanel.setLayout(new GridLayout(9,1));
+        popularPanel.setLayout(new GridLayout(4,1));
+        cantonesePanel.setLayout(new GridLayout(4,1));
+        xiangPanel.setLayout(new GridLayout(4,1));
+        dessertPanel.setLayout(new GridLayout(4,1));
         dishPanelSetup();
         jTabbedPaneCenter.add("火爆菜式",popularPanel);
         jTabbedPaneCenter.add("粤菜",cantonesePanel);
@@ -108,23 +112,131 @@ public class CustomerMainFrame extends JFrame {
                 }
             }
         });
+
+        tableComboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println(tableComboBox.getSelectedItem());
+            }
+        });
+
+
     }
 
     public  void dishPanelSetup(){
-        foodNameListc=new ArrayList<>();
+        foodNameList=new ArrayList<>();
         priceListc=new int[50];
         jdbcHelper=new JdbcHelper();
-        jdbcHelper.setFoodNameList(foodNameListc,"c");
+        jdbcHelper.setFoodNameList(foodNameList,"c");
         jdbcHelper.setPriceList(priceListc,"c");
-        for(int i=0;i<foodNameListc.size();i++){
+        for(int i=0;i<foodNameList.size();i++){
             ImageIcon img=new ImageIcon(CustomerMainFrame.class
-                    .getResource("/dishImg/"+foodNameListc.get(i)+".jpg"));
+                    .getResource("/dishImg/"+foodNameList.get(i)+".jpg"));
             JLabel jLabel=new JLabel(img);
-            JLabel jLabel1=new JLabel(Integer.toString(priceListc[i]),JLabel.CENTER);
-            JCheckBox jCheckBox=new JCheckBox(foodNameListc.get(i));
+
+            JLabel jLabel1=new JLabel(Integer.toString(priceListc[i])+"元",JLabel.CENTER);
+            JCheckBox jCheckBox=new JCheckBox(foodNameList.get(i));
+
             cantonesePanel.add(jLabel);
             cantonesePanel.add(jLabel1);
             cantonesePanel.add(jCheckBox);
+
+           jCheckBox.addActionListener(new CheckBoxListener(cantonesePanel));
         }
+
+        foodNameList.clear();
+        priceListc=new int[50];
+        jdbcHelper.setFoodNameList(foodNameList,"x");
+        jdbcHelper.setPriceList(priceListc,"x");
+        for (int i=0;i<foodNameList.size();i++){
+            ImageIcon img=new ImageIcon(CustomerMainFrame.class
+                    .getResource("/dishImg/"+foodNameList.get(i)+".jpg"));
+            JLabel jLabel=new JLabel(img);
+
+            JLabel jLabel1=new JLabel(Integer.toString(priceListc[i])+"元",JLabel.CENTER);
+            JCheckBox jCheckBox=new JCheckBox(foodNameList.get(i));
+
+            xiangPanel.add(jLabel);
+            xiangPanel.add(jLabel1);
+            xiangPanel.add(jCheckBox);
+
+            jCheckBox.addActionListener(new CheckBoxListener(xiangPanel));
+        }
+
+
+        foodNameList.clear();
+        priceListc=new int[50];
+        jdbcHelper.setFoodNameList(foodNameList,"d");
+        jdbcHelper.setPriceList(priceListc,"d");
+        for (int i=0;i<foodNameList.size();i++){
+            ImageIcon img=new ImageIcon(CustomerMainFrame.class
+                    .getResource("/dishImg/"+foodNameList.get(i)+".jpg"));
+            JLabel jLabel=new JLabel(img);
+
+            JLabel jLabel1=new JLabel(Integer.toString(priceListc[i])+"元",JLabel.CENTER);
+            JCheckBox jCheckBox=new JCheckBox(foodNameList.get(i));
+
+            dessertPanel.add(jLabel);
+            dessertPanel.add(jLabel1);
+            dessertPanel.add(jCheckBox);
+
+            jCheckBox.addActionListener(new CheckBoxListener(dessertPanel));
+        }
+
+        //for popularPanel
+        foodNameList.clear();
+        foodNameList.add("烧味拼盘");
+        foodNameList.add("姜汁撞奶");
+        foodNameList.add("小炒黄牛");
+        priceListc=new int[]{30,5,35};
+        for (int i=0;i<foodNameList.size();i++){
+            ImageIcon img=new ImageIcon(CustomerMainFrame.class
+                    .getResource("/dishImg/"+foodNameList.get(i)+".jpg"));
+            JLabel jLabel=new JLabel(img);
+
+            JLabel jLabel1=new JLabel(Integer.toString(priceListc[i])+"元",JLabel.CENTER);
+            JCheckBox jCheckBox=new JCheckBox(foodNameList.get(i));
+
+            popularPanel.add(jLabel);
+            popularPanel.add(jLabel1);
+            popularPanel.add(jCheckBox);
+
+            jCheckBox.addActionListener(new CheckBoxListener(popularPanel));
+        }
+
+
     }
+
+
+
+
+
+
+    public  class CheckBoxListener implements ActionListener{
+
+        private JPanel panel;
+        public  CheckBoxListener(JPanel panel){
+            this.panel=panel;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            for (Component component:panel.getComponents() ) {
+                if(component instanceof  JCheckBox){
+                    JCheckBox jcb=(JCheckBox)component;
+                    if (jcb.isSelected()){
+                        if(chosenFoodNameList.indexOf(jcb.getText())<0)
+                            chosenFoodNameList.add(jcb.getText());
+                    }else{
+                        chosenFoodNameList.removeIf(val->val==jcb.getText());
+                    }
+                }
+            }
+            jdbcHelper.setChosenPriceList(chosenFoodNameList,chosenPriceList);
+        }
+
+
+    }
+
+
 }

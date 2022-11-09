@@ -112,7 +112,7 @@ public class JdbcHelper implements  JdbcConfig{
     }
 
 
-    //获取图片名字
+    //获取图片名字,填入列表
     public void setFoodNameList(List<String> foodNameListc,String type){
         try{
             preparedStatement=connection.prepareStatement("SELECT foodName from food where type=?");
@@ -126,7 +126,7 @@ public class JdbcHelper implements  JdbcConfig{
         }
     }
 
-    //获取价格
+    //获取价格,填入列表
     public void setPriceList(int[] priceList,String type){
         try{
             preparedStatement=connection.prepareStatement("SELECT  price from food where type=?");
@@ -140,5 +140,23 @@ public class JdbcHelper implements  JdbcConfig{
             e.printStackTrace();
         }
     }
+
+    //获取已选菜式价格
+    public void setChosenPriceList(List<String> chosenFoodNameList,int[] chosenPriceList){
+        try{
+            int i=0;
+            for (String chosenFoodName:chosenFoodNameList) {
+                preparedStatement=connection.prepareStatement("SELECT price from food where foodName=?");
+                preparedStatement.setString(1,chosenFoodName);
+                resultSet=preparedStatement.executeQuery();
+                if (resultSet.next()){
+                    chosenPriceList[i++]=resultSet.getInt(1);
+                }
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
 
 }
