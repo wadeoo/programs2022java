@@ -1,8 +1,18 @@
 package cn.edu.fzu.sm.wuweida.bean;
 
-public class NameNPrice {
+public class NamePriceQuantity {
     private String foodName;
     private int price;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    private int quantity;
 
     public String getFoodName() {
         return foodName;

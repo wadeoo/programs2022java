@@ -1,6 +1,6 @@
 package cn.edu.fzu.sm.wuweida.tableModel;
 
-import cn.edu.fzu.sm.wuweida.bean.NameNPrice;
+import cn.edu.fzu.sm.wuweida.bean.NamePriceQuantity;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
@@ -25,11 +25,13 @@ public class ChosenDishTableModel<T> extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        NameNPrice student= (NameNPrice) rows.get(rowIndex);
+        NamePriceQuantity namePriceQuantity= (NamePriceQuantity) rows.get(rowIndex);
         if (columnIndex==0){
-            return student.getFoodName();
+            return namePriceQuantity.getFoodName();
         }else if (columnIndex==1){
-            return student.getPrice();
+            return namePriceQuantity.getPrice();
+        }else if(columnIndex==2){
+            return namePriceQuantity.getQuantity();
         }
         return null;
     }
