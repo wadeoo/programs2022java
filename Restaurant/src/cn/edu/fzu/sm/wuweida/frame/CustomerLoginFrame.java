@@ -14,16 +14,19 @@ public class CustomerLoginFrame extends JFrame {
     public CustomerLoginFrame(){
         super("欢迎光临");
 
+//        this.setContentPane(new ImagePanel());
 
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setIconImage(new ImageIcon(CustomerLoginFrame.class.getResource("/restaurant.png")).getImage());
+
         this.setType(Type.UTILITY);
-        this.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        this.setSize(400,200);
+        this.setLayout(new GridLayout(3,1));
+        this.setSize(400,150);
         this.setLocationRelativeTo(null);
 
 
-        JLabel usernameLabel=new JLabel("用户名:");
-        JLabel passwordLabel=new JLabel("密码:");
+        JLabel usernameLabel=new JLabel("用户名");
+        JLabel passwordLabel=new JLabel("密码");
 
         JTextField usernameTextField=new JTextField(16);
         JPasswordField passwordField=new JPasswordField(16);

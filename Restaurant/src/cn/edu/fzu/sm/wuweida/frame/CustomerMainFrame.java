@@ -1,18 +1,13 @@
 package cn.edu.fzu.sm.wuweida.frame;
 
-import cn.edu.fzu.sm.wuweida.bean.NamePriceQuantity;
+import cn.edu.fzu.sm.wuweida.bean.NameNPrice;
 import cn.edu.fzu.sm.wuweida.dao.JdbcHelper;
 import cn.edu.fzu.sm.wuweida.tableModel.ChosenDishTableModel;
 
-import javax.naming.Name;
 import javax.swing.*;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class CustomerMainFrame extends JFrame {
@@ -22,18 +17,18 @@ public class CustomerMainFrame extends JFrame {
     private final JPanel cantonesePanel;
     private final JPanel xiangPanel;
     private final JPanel dessertPanel;
+    private final JTable chosenDishTabel;
     private JdbcHelper jdbcHelper;
 
     private ArrayList<String> foodNameList;
     private int[] priceListc;
     private ArrayList<String> chosenFoodNameList = new ArrayList<>();
     private int[] chosenPriceList = new int[50];
-    private ArrayList<String> chosenFoodQuantityList = new ArrayList<>();
 
 
     private ArrayList<String> cols;
-    private List<NamePriceQuantity> rows;
-    private ChosenDishTableModel<NamePriceQuantity> chosenDishTableModel;
+    private List<NameNPrice> rows;
+    private ChosenDishTableModel<NameNPrice> chosenDishTableModel;
 
 
     public CustomerMainFrame(String username) throws HeadlessException {
@@ -41,8 +36,8 @@ public class CustomerMainFrame extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
-        this.setLayout(new BorderLayout(10, 0));
         this.setIconImage(new ImageIcon(CustomerMainFrame.class.getResource("/restaurant.png")).getImage());
+        this.setLayout(new BorderLayout(10,0));
 
 
         //头部欢迎词
@@ -55,15 +50,16 @@ public class CustomerMainFrame extends JFrame {
 
 
         //主面板
-        JTabbedPane jTabbedPaneCenter = new JTabbedPane();
-        popularPanel = new JPanel();
-        cantonesePanel = new JPanel();
-        xiangPanel = new JPanel();
-        dessertPanel = new JPanel();
-        popularPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 100, 10));
-        cantonesePanel.setLayout(new FlowLayout(FlowLayout.LEADING, 100, 10));
-        xiangPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 100, 10));
-        dessertPanel.setLayout(new FlowLayout(FlowLayout.LEADING, 100, 10));
+
+        JTabbedPane jTabbedPaneCenter=new JTabbedPane();
+        popularPanel= new JPanel();
+        cantonesePanel= new JPanel();
+        xiangPanel= new JPanel();
+        dessertPanel= new JPanel();
+        popularPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        cantonesePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        xiangPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
+        dessertPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
         dishPanelSetup();
         jTabbedPaneCenter.add("火爆菜式", popularPanel);
         jTabbedPaneCenter.add("粤菜", cantonesePanel);
@@ -72,38 +68,27 @@ public class CustomerMainFrame extends JFrame {
 
 
         //东部面板
-        JPanel detailPanel = new JPanel();
-        detailPanel.setPreferredSize(new Dimension(200, 400));
+
+        JPanel detailPanel=new JPanel();
         detailPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
-//        detailPanel.setLayout(new GridLayout(6,1));
-        JLabel tableChoosingLabel = new JLabel("请选择桌号");
-        JLabel headLabel = new JLabel("请输入用餐人数");
-        JLabel chosenLabel = new JLabel("已点菜式列表");
-        String[] tableNumber = {"桌1", "桌2", "桌3", "桌4", "桌5", "桌6"};
-        JComboBox tableComboBox = new JComboBox(tableNumber);
-        JTextField headTextField = new JTextField(16);
-        JTable chosenDishTabel = new JTable();
-        JScrollPane scrollPaneForTable = new JScrollPane(chosenDishTabel);
-        scrollPaneForTable.setPreferredSize(new Dimension(180, 350));
-        detailPanel.add(scrollPaneForTable);
+        detailPanel.setPreferredSize(new Dimension(200,500));
+        JLabel tableChoosingLabel=new JLabel("请选择桌号");
+        JLabel headLabel=new JLabel("请输入用餐人数");
+        JLabel chosenLabel=new JLabel("已点菜式列表");
+        String[] tableNumber={"桌1", "桌2", "桌3", "桌4", "桌5", "桌6"};
+        JComboBox tableComboBox=new JComboBox(tableNumber);
+        JTextField headTextField=new JTextField(16);
 
-        chosenFoodQuantityList.add("1");
-        chosenFoodQuantityList.add("1");
-        chosenFoodQuantityList.add("1");
-        chosenFoodQuantityList.add("1");
-        chosenFoodQuantityList.add("1");
-        chosenFoodQuantityList.add("1");
-        chosenFoodQuantityList.add("1");
-        chosenFoodQuantityList.add("1");
-        chosenFoodQuantityList.add("1");
-        chosenFoodQuantityList.add("1");
-
-        cols = new ArrayList<>();
+        chosenDishTabel=new JTable();
+//        chosenDishTabel.addMouseListener(new MouseAdapterForTable());
+        JScrollPane scrollPaneForTable=new JScrollPane(chosenDishTabel);
+        scrollPaneForTable.setPreferredSize(new Dimension(180,300));
+        cols=new ArrayList<>();
         cols.add("菜式");
         cols.add("价格");
-        cols.add("份数");
-        rows = getTheChosens();
-        chosenDishTableModel = new ChosenDishTableModel<NamePriceQuantity>(cols, rows);
+        cols.add("数量");
+        rows=getTheChosens();
+        chosenDishTableModel=new ChosenDishTableModel<NameNPrice>(cols,rows);
         chosenDishTabel.setModel(chosenDishTableModel);
 
         detailPanel.add(tableChoosingLabel);
@@ -111,8 +96,9 @@ public class CustomerMainFrame extends JFrame {
         detailPanel.add(headLabel);
         detailPanel.add(headTextField);
         detailPanel.add(chosenLabel);
+
         detailPanel.add(scrollPaneForTable);
-        this.add(detailPanel, BorderLayout.EAST);
+        this.add(detailPanel,BorderLayout.EAST);
 
         //南部面板
         JPanel actionPanel = new JPanel();
@@ -155,44 +141,19 @@ public class CustomerMainFrame extends JFrame {
 
     }
 
-    public List<NamePriceQuantity> getTheChosens() {
-        List<NamePriceQuantity> namePriceQuantityList = new ArrayList<>();
-        for (int i = 0; i < chosenFoodNameList.size(); i++) {
-            NamePriceQuantity namePriceQuantity = new NamePriceQuantity();
-            namePriceQuantity.setFoodName(chosenFoodNameList.get(i));
-            namePriceQuantity.setPrice(chosenPriceList[i]);
 
-            if (!chosenFoodQuantityList.get(i).equals(null)) {
-                namePriceQuantity.setQuantity(chosenFoodQuantityList.get(i));
-            } else {
-                namePriceQuantity.setQuantity("1");
-            }
-            namePriceQuantityList.add(namePriceQuantity);
+    public  List<NameNPrice> getTheChosens(){
+        List<NameNPrice> nameNPriceList=new ArrayList<>();
+        for (int i=0;i<chosenFoodNameList.size();i++){
+            NameNPrice nameNPrice=new NameNPrice();
+            nameNPrice.setFoodName(chosenFoodNameList.get(i));
+            nameNPrice.setPrice(chosenPriceList[i]);
+            nameNPriceList.add(nameNPrice);
         }
-        return namePriceQuantityList;
+        return nameNPriceList;
     }
 
-    public List<NamePriceQuantity> getTheChosens(JPanel panel) {
-        List<NamePriceQuantity> namePriceQuantityList = new ArrayList<>();
-        for (int i = 0; i < chosenFoodNameList.size(); i++) {
-            NamePriceQuantity namePriceQuantity = new NamePriceQuantity();
-            namePriceQuantity.setFoodName(chosenFoodNameList.get(i));
-            namePriceQuantity.setPrice(chosenPriceList[i]);
 
-            Component component = panel.getComponent(4);
-            JTextField jTextField = (JTextField) component;
-
-            chosenFoodQuantityList.add(i, jTextField.getText());
-
-            if (!chosenFoodQuantityList.get(i).equals(null)) {
-                namePriceQuantity.setQuantity(chosenFoodQuantityList.get(i));
-            } else {
-                namePriceQuantity.setQuantity("1");
-            }
-            namePriceQuantityList.add(namePriceQuantity);
-        }
-        return namePriceQuantityList;
-    }
 
 
     public void updateTable() {
@@ -201,11 +162,7 @@ public class CustomerMainFrame extends JFrame {
         chosenDishTableModel.fireTableDataChanged();
     }
 
-    public void updateTable(JPanel panel) {
-        rows = getTheChosens(panel);
-        chosenDishTableModel.setRows(rows);
-        chosenDishTableModel.fireTableDataChanged();
-    }
+
 
 
     public void dishPanelSetup() {
@@ -221,22 +178,17 @@ public class CustomerMainFrame extends JFrame {
 
             JLabel jLabel1 = new JLabel(Integer.toString(priceListc[i]) + "元", JLabel.CENTER);
             JCheckBox jCheckBox = new JCheckBox(foodNameList.get(i));
-            JLabel jLabel2 = new JLabel("份数:");
-            JTextField jTextField = new JTextField(4);
 
-            JPanel subPanel = new JPanel();
+            JPanel subPanel=new JPanel();
 
             subPanel.add(jLabel);
             subPanel.add(jLabel1);
             subPanel.add(jCheckBox);
-            subPanel.add(jLabel2);
-            subPanel.add(jTextField);
-
-            jTextField.getDocument().addDocumentListener(new QuantityTextFieldListner(subPanel));
 
             cantonesePanel.add(subPanel);
 
             jCheckBox.addActionListener(new CheckBoxListener(subPanel));
+
         }
 
         foodNameList.clear();
@@ -251,7 +203,8 @@ public class CustomerMainFrame extends JFrame {
             JLabel jLabel1 = new JLabel(Integer.toString(priceListc[i]) + "元", JLabel.CENTER);
             JCheckBox jCheckBox = new JCheckBox(foodNameList.get(i));
 
-            JPanel subPanel = new JPanel();
+
+            JPanel subPanel=new JPanel();
 
             subPanel.add(jLabel);
             subPanel.add(jLabel1);
@@ -275,7 +228,8 @@ public class CustomerMainFrame extends JFrame {
             JLabel jLabel1 = new JLabel(Integer.toString(priceListc[i]) + "元", JLabel.CENTER);
             JCheckBox jCheckBox = new JCheckBox(foodNameList.get(i));
 
-            JPanel subPanel = new JPanel();
+
+            JPanel subPanel=new JPanel();
 
             subPanel.add(jLabel);
             subPanel.add(jLabel1);
@@ -300,11 +254,13 @@ public class CustomerMainFrame extends JFrame {
             JLabel jLabel1 = new JLabel(Integer.toString(priceListc[i]) + "元", JLabel.CENTER);
             JCheckBox jCheckBox = new JCheckBox(foodNameList.get(i));
 
-            JPanel subPanel = new JPanel();
+
+            JPanel subPanel=new JPanel();
 
             subPanel.add(jLabel);
             subPanel.add(jLabel1);
             subPanel.add(jCheckBox);
+
             popularPanel.add(subPanel);
 
             jCheckBox.addActionListener(new CheckBoxListener(subPanel));
@@ -331,53 +287,12 @@ public class CustomerMainFrame extends JFrame {
                     chosenFoodNameList.add(jcb.getText());
                 }
             } else {
-                if (chosenFoodNameList.indexOf(jcb.getText()) >= 0) {
-                    int index = chosenFoodNameList.indexOf(jcb.getText());
-                    chosenFoodQuantityList.remove(index);
-                }
                 chosenFoodNameList.removeIf(val -> val == jcb.getText());
             }
-
             jdbcHelper.setChosenPriceList(chosenFoodNameList, chosenPriceList);
-            updateTable(panel);
-        }
-
-
-    }
-
-
-    private class QuantityTextFieldListner implements DocumentListener {
-        private JPanel panel;
-
-        public QuantityTextFieldListner(JPanel panel) {
-            this.panel = panel;
-        }
-
-        @Override
-        public void insertUpdate(DocumentEvent e) {
-            Component component = panel.getComponent(4);
-            JTextField jTextField = (JTextField) component;
-            Component component1 = jTextField.getParent().getComponent(2);
-            JCheckBox jCheckBox = (JCheckBox) component1;
-            String foodName = jCheckBox.getText();
-            int index = chosenFoodNameList.indexOf(foodName);
-            if (index >= 0) {
-                chosenFoodQuantityList.add(index, jTextField.getText());
-                System.out.println("6");
-                updateTable();
-            }
-
-            System.out.println("fucjkhsdf");
-        }
-
-        @Override
-        public void removeUpdate(DocumentEvent e) {
-
-        }
-
-        @Override
-        public void changedUpdate(DocumentEvent e) {
-
+            updateTable();
         }
     }
+
+
 }

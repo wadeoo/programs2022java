@@ -14,13 +14,12 @@ public class CustomerRegisterFrame extends JFrame {
         super("注册");
         this.setSize(400, 250);
         this.setLocationRelativeTo(null);
-        this.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-        this.setType(Type.UTILITY);
+        this.setLayout(new GridLayout(4, 1));
 
 
-        JLabel usernameLabel = new JLabel("用户名:");
-        JLabel passwordLabel = new JLabel("密码: ");
-        JLabel passwordConfirmLabel = new JLabel("请再输入一遍密码:");
+        JLabel usernameLabel = new JLabel("用户名");
+        JLabel passwordLabel = new JLabel("密码");
+        JLabel passwordConfirmLabel = new JLabel("请再输入一遍密码");
 
         JTextField usernameTextField = new JTextField(16);
         JPasswordField passwordField = new JPasswordField(16);
