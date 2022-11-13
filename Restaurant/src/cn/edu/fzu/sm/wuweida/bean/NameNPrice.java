@@ -3,7 +3,15 @@ package cn.edu.fzu.sm.wuweida.bean;
 public class NameNPrice {
     private String foodName;
     private int price;
+    private String quantity;
 
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
+    }
 
     public String getFoodName() {
         return foodName;

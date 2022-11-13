@@ -30,6 +30,8 @@ public class ChosenDishTableModel<T> extends AbstractTableModel {
             return student.getFoodName();
         }else if (columnIndex==1){
             return student.getPrice();
+        }else if(columnIndex==2){
+            return student.getQuantity();
         }
         return null;
     }
@@ -43,6 +45,8 @@ public class ChosenDishTableModel<T> extends AbstractTableModel {
         this.rows=rows;
     }
 
+
+
     @Override
     public boolean isCellEditable(int row,int col){
         if(col==2){
@@ -51,12 +55,5 @@ public class ChosenDishTableModel<T> extends AbstractTableModel {
             return  false;
         }
     }
-
-    @Override
-    public void setValueAt(Object value,int row,int col){
-        fireTableCellUpdated(row,col);
-
-    }
-
 
 }

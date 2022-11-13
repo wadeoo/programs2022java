@@ -5,6 +5,8 @@ import cn.edu.fzu.sm.wuweida.dao.JdbcHelper;
 import cn.edu.fzu.sm.wuweida.tableModel.ChosenDishTableModel;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -24,6 +26,7 @@ public class CustomerMainFrame extends JFrame {
     private int[] priceListc;
     private ArrayList<String> chosenFoodNameList = new ArrayList<>();
     private int[] chosenPriceList = new int[50];
+    private ArrayList<String> quantityList = new ArrayList<>();
 
 
     private ArrayList<String> cols;
@@ -37,7 +40,19 @@ public class CustomerMainFrame extends JFrame {
         this.setSize(800, 600);
         this.setLocationRelativeTo(null);
         this.setIconImage(new ImageIcon(CustomerMainFrame.class.getResource("/restaurant.png")).getImage());
-        this.setLayout(new BorderLayout(10,0));
+        this.setLayout(new BorderLayout(10, 0));
+
+        quantityList.add("1");
+        quantityList.add("1");
+        quantityList.add("1");
+        quantityList.add("1");
+        quantityList.add("1");
+        quantityList.add("1");
+        quantityList.add("1");
+        quantityList.add("1");
+        quantityList.add("1");
+        quantityList.add("1");
+        quantityList.add("1");
 
 
         //头部欢迎词
@@ -51,11 +66,11 @@ public class CustomerMainFrame extends JFrame {
 
         //主面板
 
-        JTabbedPane jTabbedPaneCenter=new JTabbedPane();
-        popularPanel= new JPanel();
-        cantonesePanel= new JPanel();
-        xiangPanel= new JPanel();
-        dessertPanel= new JPanel();
+        JTabbedPane jTabbedPaneCenter = new JTabbedPane();
+        popularPanel = new JPanel();
+        cantonesePanel = new JPanel();
+        xiangPanel = new JPanel();
+        dessertPanel = new JPanel();
         popularPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
         cantonesePanel.setLayout(new FlowLayout(FlowLayout.LEADING));
         xiangPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
@@ -69,26 +84,26 @@ public class CustomerMainFrame extends JFrame {
 
         //东部面板
 
-        JPanel detailPanel=new JPanel();
+        JPanel detailPanel = new JPanel();
         detailPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
-        detailPanel.setPreferredSize(new Dimension(200,500));
-        JLabel tableChoosingLabel=new JLabel("请选择桌号");
-        JLabel headLabel=new JLabel("请输入用餐人数");
-        JLabel chosenLabel=new JLabel("已点菜式列表");
-        String[] tableNumber={"桌1", "桌2", "桌3", "桌4", "桌5", "桌6"};
-        JComboBox tableComboBox=new JComboBox(tableNumber);
-        JTextField headTextField=new JTextField(16);
+        detailPanel.setPreferredSize(new Dimension(200, 500));
+        JLabel tableChoosingLabel = new JLabel("请选择桌号");
+        JLabel headLabel = new JLabel("请输入用餐人数");
+        JLabel chosenLabel = new JLabel("已点菜式列表");
+        String[] tableNumber = {"桌1", "桌2", "桌3", "桌4", "桌5", "桌6"};
+        JComboBox tableComboBox = new JComboBox(tableNumber);
+        JTextField headTextField = new JTextField(16);
 
-        chosenDishTabel=new JTable();
-//        chosenDishTabel.addMouseListener(new MouseAdapterForTable());
-        JScrollPane scrollPaneForTable=new JScrollPane(chosenDishTabel);
-        scrollPaneForTable.setPreferredSize(new Dimension(180,300));
-        cols=new ArrayList<>();
+        chosenDishTabel = new JTable();
+        JScrollPane scrollPaneForTable = new JScrollPane(chosenDishTabel);
+        scrollPaneForTable.setPreferredSize(new Dimension(180, 300));
+        cols = new ArrayList<>();
         cols.add("菜式");
         cols.add("价格");
         cols.add("数量");
-        rows=getTheChosens();
-        chosenDishTableModel=new ChosenDishTableModel<NameNPrice>(cols,rows);
+        rows = getTheChosens();
+        chosenDishTableModel = new ChosenDishTableModel<>(cols, rows);
+        chosenDishTableModel.addTableModelListener(new MyTableModelListener());
         chosenDishTabel.setModel(chosenDishTableModel);
 
         detailPanel.add(tableChoosingLabel);
@@ -98,7 +113,7 @@ public class CustomerMainFrame extends JFrame {
         detailPanel.add(chosenLabel);
 
         detailPanel.add(scrollPaneForTable);
-        this.add(detailPanel,BorderLayout.EAST);
+        this.add(detailPanel, BorderLayout.EAST);
 
         //南部面板
         JPanel actionPanel = new JPanel();
@@ -142,18 +157,17 @@ public class CustomerMainFrame extends JFrame {
     }
 
 
-    public  List<NameNPrice> getTheChosens(){
-        List<NameNPrice> nameNPriceList=new ArrayList<>();
-        for (int i=0;i<chosenFoodNameList.size();i++){
-            NameNPrice nameNPrice=new NameNPrice();
+    public List<NameNPrice> getTheChosens() {
+        List<NameNPrice> nameNPriceList = new ArrayList<>();
+        for (int i = 0; i < chosenFoodNameList.size(); i++) {
+            NameNPrice nameNPrice = new NameNPrice();
             nameNPrice.setFoodName(chosenFoodNameList.get(i));
             nameNPrice.setPrice(chosenPriceList[i]);
+            nameNPrice.setQuantity(quantityList.get(i));
             nameNPriceList.add(nameNPrice);
         }
         return nameNPriceList;
     }
-
-
 
 
     public void updateTable() {
@@ -161,8 +175,6 @@ public class CustomerMainFrame extends JFrame {
         chosenDishTableModel.setRows(rows);
         chosenDishTableModel.fireTableDataChanged();
     }
-
-
 
 
     public void dishPanelSetup() {
@@ -179,7 +191,7 @@ public class CustomerMainFrame extends JFrame {
             JLabel jLabel1 = new JLabel(Integer.toString(priceListc[i]) + "元", JLabel.CENTER);
             JCheckBox jCheckBox = new JCheckBox(foodNameList.get(i));
 
-            JPanel subPanel=new JPanel();
+            JPanel subPanel = new JPanel();
 
             subPanel.add(jLabel);
             subPanel.add(jLabel1);
@@ -204,7 +216,7 @@ public class CustomerMainFrame extends JFrame {
             JCheckBox jCheckBox = new JCheckBox(foodNameList.get(i));
 
 
-            JPanel subPanel=new JPanel();
+            JPanel subPanel = new JPanel();
 
             subPanel.add(jLabel);
             subPanel.add(jLabel1);
@@ -229,7 +241,7 @@ public class CustomerMainFrame extends JFrame {
             JCheckBox jCheckBox = new JCheckBox(foodNameList.get(i));
 
 
-            JPanel subPanel=new JPanel();
+            JPanel subPanel = new JPanel();
 
             subPanel.add(jLabel);
             subPanel.add(jLabel1);
@@ -255,7 +267,7 @@ public class CustomerMainFrame extends JFrame {
             JCheckBox jCheckBox = new JCheckBox(foodNameList.get(i));
 
 
-            JPanel subPanel=new JPanel();
+            JPanel subPanel = new JPanel();
 
             subPanel.add(jLabel);
             subPanel.add(jLabel1);
@@ -295,4 +307,15 @@ public class CustomerMainFrame extends JFrame {
     }
 
 
+    private class MyTableModelListener implements TableModelListener {
+        @Override
+        public void tableChanged(TableModelEvent e) {
+            int row = chosenDishTabel.getSelectedRow();
+            int col = chosenDishTabel.getSelectedColumn();
+//
+            String value = (String) chosenDishTabel.getValueAt(row, col);
+//            chosenDishTabel.setValueAt(value, row, col);
+            quantityList.add(row,value);
+        }
+    }
 }
